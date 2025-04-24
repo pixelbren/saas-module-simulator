@@ -2,7 +2,12 @@
 
 import { useState } from "react";
 import toast from "react-hot-toast";
-import { CreditCardIcon, CheckIcon } from "@heroicons/react/24/outline";
+import {
+  CreditCardIcon,
+  CheckIcon,
+  BanknotesIcon,
+  ClockIcon,
+} from "@heroicons/react/24/outline";
 
 const plans = [
   {
@@ -84,42 +89,59 @@ export default function Billing() {
   };
 
   return (
-    <div className="space-y-6">
-      <div>
-        <h2 className="text-3xl font-semibold text-gray-900 dark:text-white">
-          Billing & Subscription
-        </h2>
-      </div>
+    <div className="space-y-8">
+      <h1 className="text-3xl font-semibold text-gray-900 dark:text-white">
+        Billing & Subscription
+      </h1>
 
       {/* Current Plan */}
       <div className="rounded-xl bg-white dark:bg-gray-800 p-6 shadow-lg dark:shadow-gray-900/20">
-        <div className="px-4 py-5 sm:p-6">
-          <h3 className="text-lg leading-6 font-medium text-gray-900 dark:text-white flex items-center">
-            <CreditCardIcon className="h-5 w-5 mr-2 text-primary-600 dark:text-primary-400" />
-            Current Plan
-          </h3>
-          <div className="mt-5">
-            <div className="rounded-lg bg-primary-400/5 dark:bg-primary-500/5 px-6 py-5 sm:flex sm:items-center sm:justify-between">
-              <div className="sm:flex sm:items-center">
-                <div>
-                  <h4 className="text-lg font-medium text-primary-600 dark:text-primary-400">
-                    Pro Plan
-                  </h4>
-                  <p className="mt-1 text-sm text-gray-500 dark:text-gray-400">
-                    Your subscription will renew on January 15, 2024
-                  </p>
-                </div>
+        <h2 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">
+          Current Plan
+        </h2>
+        <div className="flex items-center justify-between">
+          <div>
+            <p className="text-sm text-gray-500 dark:text-gray-400">
+              You are currently on the
+            </p>
+            <p className="text-lg font-medium text-gray-900 dark:text-white">
+              Pro Plan
+            </p>
+          </div>
+          <button className="rounded-lg bg-primary-600 px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-primary-500 dark:bg-primary-500 dark:hover:bg-primary-400">
+            Upgrade Plan
+          </button>
+        </div>
+      </div>
+
+      {/* Payment Methods */}
+      <div className="rounded-xl bg-white dark:bg-gray-800 p-6 shadow-lg dark:shadow-gray-900/20">
+        <h2 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">
+          Payment Methods
+        </h2>
+        <div className="space-y-4">
+          <div className="flex items-center justify-between p-4 rounded-lg border border-gray-200 dark:border-gray-700">
+            <div className="flex items-center gap-4">
+              <div className="rounded-full bg-gray-100 dark:bg-gray-700 p-2">
+                <CreditCardIcon className="h-6 w-6 text-gray-600 dark:text-gray-400" />
               </div>
-              <div className="mt-4 sm:mt-0 sm:ml-6">
-                <button
-                  type="button"
-                  className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-lg text-white bg-primary-600 hover:bg-primary-500 dark:bg-primary-500 dark:hover:bg-primary-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500"
-                >
-                  Update Payment Method
-                </button>
+              <div>
+                <p className="font-medium text-gray-900 dark:text-white">
+                  •••• 4242
+                </p>
+                <p className="text-sm text-gray-500 dark:text-gray-400">
+                  Expires 12/24
+                </p>
               </div>
             </div>
+            <button className="text-sm font-medium text-primary-600 hover:text-primary-500 dark:text-primary-400 dark:hover:text-primary-300">
+              Edit
+            </button>
           </div>
+          <button className="flex items-center gap-2 text-sm font-medium text-primary-600 hover:text-primary-500 dark:text-primary-400 dark:hover:text-primary-300">
+            <BanknotesIcon className="h-5 w-5" />
+            Add new payment method
+          </button>
         </div>
       </div>
 
@@ -195,55 +217,38 @@ export default function Billing() {
 
       {/* Billing History */}
       <div className="rounded-xl bg-white dark:bg-gray-800 p-6 shadow-lg dark:shadow-gray-900/20">
-        <div className="px-4 py-5 sm:p-6">
-          <h3 className="text-lg leading-6 font-medium text-gray-900 dark:text-white">
-            Billing History
-          </h3>
-          <div className="mt-5">
-            <div className="overflow-x-auto">
-              <table className="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
-                <thead className="bg-gray-50 dark:bg-gray-700">
-                  <tr>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
-                      Date
-                    </th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
-                      Description
-                    </th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
-                      Amount
-                    </th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
-                      Status
-                    </th>
-                  </tr>
-                </thead>
-                <tbody className="bg-white dark:bg-gray-800 divide-y divide-gray-200 dark:divide-gray-700">
-                  {billingHistory.map((item) => (
-                    <tr
-                      key={item.id}
-                      className="hover:bg-gray-50 dark:hover:bg-gray-700/50"
-                    >
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-400">
-                        {item.date}
-                      </td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-white">
-                        {item.description}
-                      </td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900 dark:text-white">
-                        {item.amount}
-                      </td>
-                      <td className="px-6 py-4 whitespace-nowrap">
-                        <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-success-50 dark:bg-success-900/30 text-success-700 dark:text-success-400">
-                          {item.status}
-                        </span>
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
+        <h2 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">
+          Billing History
+        </h2>
+        <div className="space-y-4">
+          {billingHistory.map((item) => (
+            <div
+              key={item.id}
+              className="flex items-center justify-between p-4 rounded-lg border border-gray-200 dark:border-gray-700"
+            >
+              <div className="flex items-center gap-4">
+                <div className="rounded-full bg-gray-100 dark:bg-gray-700 p-2">
+                  <ClockIcon className="h-6 w-6 text-gray-600 dark:text-gray-400" />
+                </div>
+                <div>
+                  <p className="font-medium text-gray-900 dark:text-white">
+                    {item.description}
+                  </p>
+                  <p className="text-sm text-gray-500 dark:text-gray-400">
+                    {item.date}
+                  </p>
+                </div>
+              </div>
+              <div className="text-right">
+                <p className="font-medium text-gray-900 dark:text-white">
+                  {item.amount}
+                </p>
+                <button className="text-sm font-medium text-primary-600 hover:text-primary-500 dark:text-primary-400 dark:hover:text-primary-300">
+                  Download
+                </button>
+              </div>
             </div>
-          </div>
+          ))}
         </div>
       </div>
     </div>
