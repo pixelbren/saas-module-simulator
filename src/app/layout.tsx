@@ -4,8 +4,6 @@ import "./globals.css";
 import { Toaster } from "react-hot-toast";
 import { Providers } from "./providers";
 
-const inter = Inter({ subsets: ["latin"] });
-
 export const metadata: Metadata = {
   title: "SaaS Module Simulator",
   description: "A live, interactive library of reusable software modules",

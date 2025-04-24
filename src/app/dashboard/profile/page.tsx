@@ -4,6 +4,7 @@ import { useSession } from "next-auth/react";
 import { useState } from "react";
 import toast from "react-hot-toast";
 import { UserIcon } from "@heroicons/react/24/outline";
+import Image from "next/image";
 
 export default function Profile() {
   const { data: session, update } = useSession();
@@ -48,9 +49,11 @@ export default function Profile() {
               <div className="mt-1 flex items-center">
                 <div className="h-12 w-12 rounded-full overflow-hidden bg-gray-100 dark:bg-gray-700">
                   {session?.user?.image ? (
-                    <img
+                    <Image
                       src={session.user.image}
                       alt="Profile"
+                      width={48}
+                      height={48}
                       className="h-full w-full object-cover"
                     />
                   ) : (
