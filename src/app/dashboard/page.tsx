@@ -40,35 +40,39 @@ ChartJS.register(
 const stats = [
   {
     name: "Active Modules",
-    value: "12",
+    value: "34",
     icon: ChartBarIcon,
-    change: "+2",
+    change: "+2.08%",
     changeType: "positive",
-    color: "from-blue-400 to-blue-600",
+    color: "from-primary-400 to-primary-600",
+    subtitle: "Modules vs last month",
   },
   {
-    name: "Total Users",
-    value: "8,439",
-    icon: UserGroupIcon,
-    change: "+15%",
+    name: "Total API Calls",
+    value: "2.4M",
+    icon: ArrowTrendingUpIcon,
+    change: "+12.4%",
     changeType: "positive",
-    color: "from-emerald-400 to-emerald-600",
+    color: "from-white to-white",
+    subtitle: "Calls vs last month",
+  },
+  {
+    name: "Active Users",
+    value: "14,987",
+    icon: UserGroupIcon,
+    change: "+5.08%",
+    changeType: "positive",
+    color: "from-white to-white",
+    subtitle: "Users vs last month",
   },
   {
     name: "Module Usage",
-    value: "92%",
-    icon: ArrowTrendingUpIcon,
-    change: "+4.3%",
-    changeType: "positive",
-    color: "from-purple-400 to-purple-600",
-  },
-  {
-    name: "API Calls",
-    value: "2.1M",
+    value: "98.2%",
     icon: CurrencyDollarIcon,
-    change: "+12%",
+    change: "+12.1%",
     changeType: "positive",
-    color: "from-pink-400 to-pink-600",
+    color: "from-white to-white",
+    subtitle: "Usage vs last month",
   },
 ];
 
@@ -112,11 +116,19 @@ const softwareList = [
 ];
 
 const monthlyData = {
-  labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun"],
+  labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul"],
   datasets: [
     {
       label: "Module Activations",
-      data: [1200, 1900, 2300, 2800, 3200, 3800],
+      data: [10, 15, 12, 18, 25, 28, 30],
+      borderColor: "#E2E8F0",
+      backgroundColor: "#F8FAFC",
+      fill: true,
+      tension: 0.4,
+    },
+    {
+      label: "Active Usage",
+      data: [8, 12, 15, 20, 22, 25, 28],
       borderColor: "rgb(99, 102, 241)",
       backgroundColor: "rgba(99, 102, 241, 0.1)",
       fill: true,
@@ -126,73 +138,107 @@ const monthlyData = {
 };
 
 const revenueData = {
-  labels: ["Auth", "Payment", "User Mgmt", "Analytics", "Storage", "Email"],
+  labels: ["Auth Module", "Payment Module", "User Management"],
   datasets: [
     {
       label: "API Calls (thousands)",
-      data: [350, 280, 420, 190, 250, 150],
-      backgroundColor: "rgba(99, 102, 241, 0.8)",
-    },
-  ],
-};
-
-const usageData = {
-  labels: [
-    "Authentication",
-    "Payment",
-    "User Mgmt",
-    "Analytics",
-    "Storage",
-    "Email",
-  ],
-  datasets: [
-    {
-      data: [30, 25, 20, 10, 10, 5],
+      data: [2487, 1828, 1463],
       backgroundColor: [
         "rgba(99, 102, 241, 0.8)",
         "rgba(16, 185, 129, 0.8)",
-        "rgba(168, 85, 247, 0.8)",
-        "rgba(236, 72, 153, 0.8)",
-        "rgba(245, 158, 11, 0.8)",
-        "rgba(75, 85, 99, 0.8)",
+        "rgba(239, 68, 68, 0.8)",
       ],
     },
   ],
 };
 
-const chartOptions = {
+const usageData = {
+  labels: ["Authentication", "Payment", "User Mgmt", "Storage"],
+  datasets: [
+    {
+      data: [2417, 2281, 812, 287],
+      backgroundColor: [
+        "rgba(99, 102, 241, 0.8)",
+        "rgba(16, 185, 129, 0.8)",
+        "rgba(239, 68, 68, 0.8)",
+        "rgba(245, 158, 11, 0.8)",
+      ],
+    },
+  ],
+};
+
+const baseOptions = {
   responsive: true,
   maintainAspectRatio: false,
   plugins: {
     legend: {
       position: "top" as const,
+      align: "start" as const,
+      labels: {
+        boxWidth: 8,
+        usePointStyle: true,
+        pointStyle: "circle",
+      },
     },
   },
+};
+
+const lineOptions = {
+  ...baseOptions,
+  scales: {
+    x: {
+      grid: {
+        display: false,
+      },
+    },
+    y: {
+      grid: {
+        color: "#F1F5F9",
+      },
+      beginAtZero: true,
+    },
+  },
+};
+
+const barOptions = {
+  ...baseOptions,
+  scales: {
+    x: {
+      grid: {
+        display: false,
+      },
+    },
+    y: {
+      grid: {
+        color: "#F1F5F9",
+      },
+      beginAtZero: true,
+    },
+  },
+};
+
+const doughnutOptions = {
+  ...baseOptions,
 };
 
 function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(" ");
 }
 
-function getStatusColor(status: string) {
-  switch (status.toLowerCase()) {
-    case "active":
-      return "bg-green-100 text-green-800";
-    case "maintenance":
-      return "bg-yellow-100 text-yellow-800";
-    case "inactive":
-      return "bg-red-100 text-red-800";
-    default:
-      return "bg-gray-100 text-gray-800";
-  }
-}
-
 export default function Dashboard() {
   return (
-    <div className="space-y-6">
+    <div className="space-y-8 p-8 max-w-[1920px] mx-auto">
       <div className="flex items-center justify-between">
-        <h2 className="text-xl font-semibold text-gray-900">Module Overview</h2>
-        <button className="px-4 py-2 text-sm font-medium text-gray-600 bg-white border border-gray-200 rounded-lg hover:bg-gray-50">
+        <div>
+          <h2 className="text-3xl font-semibold text-gray-900">
+            Module Overview
+          </h2>
+          <p className="text-sm text-gray-500 mt-1">
+            Friday, December 15th 2023
+          </p>
+        </div>
+        <button className="btn bg-white hover:bg-gray-50 shadow-[0_2px_8px_-3px_rgba(0,0,0,0.07)] hover:shadow-[0_4px_12px_-2px_rgba(0,0,0,0.08)] rounded-xl px-4 py-2 text-sm font-medium text-gray-700 flex items-center transition-all duration-200">
+          <ArrowDownIcon className="h-4 w-4 mr-2" />
           Download Report
         </button>
       </div>
@@ -202,38 +248,77 @@ export default function Dashboard() {
         {stats.map((item) => (
           <div
             key={item.name}
-            className="relative overflow-hidden rounded-2xl bg-white p-6 shadow-lg transition-all duration-300 hover:shadow-xl hover:-translate-y-1"
+            className="relative overflow-hidden rounded-xl bg-white p-6 shadow-lg"
           >
             <dt>
               <div
-                className={`absolute rounded-xl bg-gradient-to-r ${item.color} p-3`}
+                className={classNames(
+                  "absolute rounded-xl p-3",
+                  item.name === "Active Modules"
+                    ? "bg-primary-400"
+                    : "bg-secondary-50"
+                )}
               >
-                <item.icon className="h-6 w-6 text-white" aria-hidden="true" />
+                <item.icon
+                  className={classNames(
+                    "h-6 w-6",
+                    item.name === "Active Modules"
+                      ? "text-white"
+                      : "text-primary-500"
+                  )}
+                  aria-hidden="true"
+                />
               </div>
-              <p className="ml-16 truncate text-sm font-medium text-gray-500">
-                {item.name}
-              </p>
+              <div className="ml-16">
+                <p
+                  className={classNames(
+                    "truncate text-sm font-medium",
+                    item.name === "Active Modules"
+                      ? "text-primary-100"
+                      : "text-gray-500"
+                  )}
+                >
+                  {item.name}
+                </p>
+                <p
+                  className={classNames(
+                    "text-xs mt-1",
+                    item.name === "Active Modules"
+                      ? "text-primary-200"
+                      : "text-gray-400"
+                  )}
+                >
+                  {item.subtitle}
+                </p>
+              </div>
             </dt>
-            <dd className="ml-16 flex items-baseline">
-              <p className="text-2xl font-semibold text-gray-900">
+            <dd className="ml-16 mt-6 flex items-baseline">
+              <p
+                className={classNames(
+                  "text-2xl font-semibold",
+                  item.name === "Active Modules"
+                    ? "text-white"
+                    : "text-gray-900"
+                )}
+              >
                 {item.value}
               </p>
               <p
                 className={classNames(
                   item.changeType === "positive"
-                    ? "text-green-600"
-                    : "text-red-600",
-                  "ml-2 flex items-baseline text-sm font-semibold"
+                    ? "bg-success-50 text-success-700"
+                    : "bg-error-50 text-error-700",
+                  "ml-2 inline-flex items-baseline rounded-full px-2.5 py-0.5 text-sm font-medium"
                 )}
               >
                 {item.changeType === "positive" ? (
                   <ArrowUpIcon
-                    className="h-5 w-5 flex-shrink-0 self-center text-green-500"
+                    className="h-4 w-4 flex-shrink-0 self-center"
                     aria-hidden="true"
                   />
                 ) : (
                   <ArrowDownIcon
-                    className="h-5 w-5 flex-shrink-0 self-center text-red-500"
+                    className="h-4 w-4 flex-shrink-0 self-center"
                     aria-hidden="true"
                   />
                 )}
@@ -245,81 +330,125 @@ export default function Dashboard() {
       </div>
 
       {/* Charts Grid */}
-      <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
-        <div className="rounded-2xl bg-white p-6 shadow-lg">
-          <h3 className="text-lg font-medium text-gray-900 mb-4">
-            Module Activation Trend
-          </h3>
+      <div className="grid grid-cols-1 gap-8 lg:grid-cols-2">
+        <div className="rounded-xl bg-white p-6 shadow-lg">
+          <div className="flex items-center justify-between mb-6">
+            <div>
+              <h3 className="text-xl font-semibold text-gray-900">
+                Module Usage Trends
+              </h3>
+              <p className="text-sm text-gray-500 mt-1">
+                Track module activation and usage
+              </p>
+            </div>
+            <select className="form-select text-sm rounded-xl bg-white shadow-[0_2px_8px_-3px_rgba(0,0,0,0.07)] hover:shadow-[0_4px_12px_-2px_rgba(0,0,0,0.08)] px-3 py-2 text-gray-700 focus:outline-none focus:ring-2 focus:ring-[#6E62E5] transition-all duration-200">
+              <option>This year</option>
+              <option>Last year</option>
+            </select>
+          </div>
           <div className="h-80">
-            <Line data={monthlyData} options={chartOptions} />
+            <Line data={monthlyData} options={lineOptions} />
           </div>
         </div>
 
-        <div className="rounded-2xl bg-white p-6 shadow-lg">
-          <h3 className="text-lg font-medium text-gray-900 mb-4">
-            API Usage by Module
-          </h3>
+        <div className="rounded-xl bg-white p-6 shadow-lg">
+          <div className="flex items-center justify-between mb-6">
+            <div>
+              <h3 className="text-xl font-semibold text-gray-900">
+                API Usage by Module
+              </h3>
+              <p className="text-sm text-gray-500 mt-1">
+                Track API consumption
+              </p>
+            </div>
+            <select className="form-select text-sm rounded-xl bg-white shadow-[0_2px_8px_-3px_rgba(0,0,0,0.07)] hover:shadow-[0_4px_12px_-2px_rgba(0,0,0,0.08)] px-3 py-2 text-gray-700 focus:outline-none focus:ring-2 focus:ring-[#6E62E5] transition-all duration-200">
+              <option>Today</option>
+              <option>This week</option>
+            </select>
+          </div>
           <div className="h-80">
-            <Bar data={revenueData} options={chartOptions} />
+            <Bar data={revenueData} options={barOptions} />
           </div>
         </div>
       </div>
 
-      <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
-        <div className="rounded-2xl bg-white p-6 shadow-lg">
-          <h3 className="text-lg font-medium text-gray-900 mb-4">
-            Module Usage Distribution
-          </h3>
+      <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
+        <div className="rounded-xl bg-white p-6 shadow-lg lg:col-span-1">
+          <div className="flex items-center justify-between mb-6">
+            <div>
+              <h3 className="text-xl font-semibold text-gray-900">
+                Module Distribution
+              </h3>
+              <p className="text-sm text-gray-500 mt-1">
+                Track module usage distribution
+              </p>
+            </div>
+            <select className="form-select text-sm rounded-xl bg-white shadow-[0_2px_8px_-3px_rgba(0,0,0,0.07)] hover:shadow-[0_4px_12px_-2px_rgba(0,0,0,0.08)] px-3 py-2 text-gray-700 focus:outline-none focus:ring-2 focus:ring-[#6E62E5] transition-all duration-200">
+              <option>Today</option>
+              <option>This week</option>
+            </select>
+          </div>
           <div className="h-64">
-            <Doughnut data={usageData} options={chartOptions} />
+            <Doughnut data={usageData} options={doughnutOptions} />
           </div>
         </div>
 
         {/* Software Status Table */}
-        <div className="lg:col-span-2 rounded-2xl bg-white p-6 shadow-lg">
-          <h3 className="text-lg font-medium text-gray-900 mb-4">
-            Module Status
-          </h3>
+        <div className="rounded-xl bg-white shadow-lg lg:col-span-2">
+          <div className="flex items-center justify-between mb-6 p-6">
+            <div>
+              <h3 className="text-xl font-semibold text-gray-900">
+                Module Status
+              </h3>
+              <p className="text-sm text-gray-500 mt-1">
+                Track module health and performance
+              </p>
+            </div>
+          </div>
           <div className="overflow-x-auto">
-            <table className="min-w-full divide-y divide-gray-200">
+            <table className="w-full">
               <thead>
-                <tr>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                <tr className="border-b border-gray-100">
+                  <th className="text-left py-3 px-6 text-sm font-medium text-gray-500">
                     Name
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  <th className="text-left py-3 px-6 text-sm font-medium text-gray-500">
                     Status
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                    Users
+                  <th className="text-left py-3 px-6 text-sm font-medium text-gray-500">
+                    API Calls
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  <th className="text-left py-3 px-6 text-sm font-medium text-gray-500">
                     Last Updated
                   </th>
                 </tr>
               </thead>
-              <tbody className="bg-white divide-y divide-gray-200">
-                {softwareList.map((software, idx) => (
+              <tbody className="divide-y divide-gray-50">
+                {softwareList.map((software) => (
                   <tr
                     key={software.name}
-                    className={idx % 2 === 0 ? "bg-white" : "bg-gray-50"}
+                    className="hover:bg-gray-50/50 transition-colors duration-150"
                   >
-                    <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                    <td className="py-3 px-6 text-sm font-medium text-gray-900">
                       {software.name}
                     </td>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm">
+                    <td className="py-3 px-6">
                       <span
-                        className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${getStatusColor(
-                          software.status
-                        )}`}
+                        className={`inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium ${
+                          software.status === "Active"
+                            ? "bg-success-50 text-success-700"
+                            : software.status === "Maintenance"
+                            ? "bg-error-50 text-error-700"
+                            : "bg-gray-100 text-gray-600"
+                        }`}
                       >
                         {software.status}
                       </span>
                     </td>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                    <td className="py-3 px-6 text-sm text-gray-500">
                       {software.users.toLocaleString()}
                     </td>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                    <td className="py-3 px-6 text-sm text-gray-500">
                       {software.lastUpdated}
                     </td>
                   </tr>

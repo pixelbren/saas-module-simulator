@@ -59,7 +59,7 @@ export default function Profile() {
                 </div>
                 <button
                   type="button"
-                  className="ml-5 bg-white py-2 px-3 border border-gray-300 rounded-md shadow-sm text-sm leading-4 font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                  className="ml-5 bg-white py-2 px-3 border border-gray-200 rounded-md shadow-sm text-sm leading-4 font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                 >
                   Change
                 </button>
@@ -81,7 +81,7 @@ export default function Profile() {
                   id="name"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
-                  className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
+                  className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-200 rounded-md"
                 />
               </div>
             </div>
@@ -101,7 +101,7 @@ export default function Profile() {
                   id="email"
                   value={email}
                   disabled
-                  className="shadow-sm bg-gray-50 block w-full sm:text-sm border-gray-300 rounded-md"
+                  className="shadow-sm bg-gray-50 block w-full sm:text-sm border-gray-200 rounded-md"
                 />
               </div>
             </div>
