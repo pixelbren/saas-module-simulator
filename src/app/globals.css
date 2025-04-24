@@ -83,11 +83,11 @@
   --text-base: 1rem;
   --text-lg: 1.125rem;
   --text-xl: 1.25rem;
-  --text-2xl: 1.5rem;
+  --text-primary-600xl: 1.5rem;
   --text-3xl: 1.875rem;
   --text-4xl: 2.25rem;
-  --text-5xl: 3rem;
-  --text-6xl: 3.75rem;
+  --text-primary-600xl: 3rem;
+  --text-primary-600xl: 3.75rem;
   --text-7xl: 4.5rem;
   --text-8xl: 6rem;
   --text-9xl: 8rem;
@@ -245,7 +245,7 @@
   .text-success {
     @apply text-[var(--color-success-500)];
   }
-  .text-error {
+  .text-primary-600rror {
     @apply text-[var(--color-error-500)];
   }
 

@@ -38,7 +38,9 @@ export default function Sidebar({ isMobile = false, onClose }: SidebarProps) {
       {/* Logo section */}
       <div className="flex h-16 items-center gap-2 px-6">
         <Link href="/dashboard" className="flex items-center gap-2">
-          <span className="text-xl font-semibold text-[#6E62E5]">YSaaS</span>
+          <span className="text-xl font-semibold text-primary-600 dark:text-primary-400">
+            YSaaS
+          </span>
           <span className="text-sm text-gray-600 dark:text-gray-400">
             Simulator
           </span>
@@ -64,14 +66,14 @@ export default function Sidebar({ isMobile = false, onClose }: SidebarProps) {
               onClick={isMobile ? onClose : undefined}
               className={`group flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium transition-colors ${
                 isActive
-                  ? "bg-[#6E62E5]/10 text-[#6E62E5]"
+                  ? "bg-primary-400/10 text-primary-600 dark:bg-primary-500/10 dark:text-primary-400"
                   : "text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-800"
               }`}
             >
               <item.icon
                 className={`h-5 w-5 flex-shrink-0 ${
                   isActive
-                    ? "text-[#6E62E5]"
+                    ? "text-primary-600 dark:text-primary-400"
                     : "text-gray-400 group-hover:text-gray-600 dark:text-gray-500 dark:group-hover:text-gray-400"
                 }`}
                 aria-hidden="true"
@@ -83,7 +85,7 @@ export default function Sidebar({ isMobile = false, onClose }: SidebarProps) {
       </nav>
 
       {/* Help section */}
-      <div className="mx-3 mb-4 rounded-xl bg-[#6E62E5]/5 p-4 shadow-lg">
+      <div className="mx-3 mb-4 rounded-xl bg-primary-400/5 p-4 shadow-lg dark:bg-primary-500/5">
         <h3 className="text-sm font-medium text-gray-900 dark:text-white">
           Help Center
         </h3>
@@ -92,7 +94,7 @@ export default function Sidebar({ isMobile = false, onClose }: SidebarProps) {
           <br />
           How can we help you?
         </p>
-        <button className="mt-3 w-full rounded-lg bg-[#6E62E5] px-3 py-2 text-sm font-medium text-white hover:bg-[#6E62E5]/90">
+        <button className="mt-3 w-full rounded-lg bg-primary-600 px-3 py-2 text-sm font-medium text-white hover:bg-primary-500 dark:bg-primary-500 dark:hover:bg-primary-400">
           Send a message
         </button>
       </div>

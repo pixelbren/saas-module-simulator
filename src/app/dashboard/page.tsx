@@ -53,7 +53,7 @@ const stats = [
     icon: ArrowTrendingUpIcon,
     change: "+12.4%",
     changeType: "positive",
-    color: "from-white to-white",
+    color: "from-primary-400 to-primary-600",
     subtitle: "Calls vs last month",
   },
   {
@@ -62,7 +62,7 @@ const stats = [
     icon: UserGroupIcon,
     change: "+5.08%",
     changeType: "positive",
-    color: "from-white to-white",
+    color: "from-primary-400 to-primary-600",
     subtitle: "Users vs last month",
   },
   {
@@ -71,7 +71,7 @@ const stats = [
     icon: CurrencyDollarIcon,
     change: "+12.1%",
     changeType: "positive",
-    color: "from-white to-white",
+    color: "from-primary-400 to-primary-600",
     subtitle: "Usage vs last month",
   },
 ];
@@ -230,14 +230,14 @@ export default function Dashboard() {
     <div className="space-y-8 p-8 max-w-[1920px] mx-auto">
       <div className="flex items-center justify-between">
         <div>
-          <h2 className="text-3xl font-semibold text-gray-900">
+          <h2 className="text-3xl font-semibold text-gray-900 dark:text-white">
             Module Overview
           </h2>
-          <p className="text-sm text-gray-500 mt-1">
+          <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">
             Friday, December 15th 2023
           </p>
         </div>
-        <button className="btn bg-white hover:bg-gray-50 shadow-[0_2px_8px_-3px_rgba(0,0,0,0.07)] hover:shadow-[0_4px_12px_-2px_rgba(0,0,0,0.08)] rounded-xl px-4 py-2 text-sm font-medium text-gray-700 flex items-center transition-all duration-200">
+        <button className="btn bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 rounded-xl px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-200 flex items-center transition-all duration-200">
           <ArrowDownIcon className="h-4 w-4 mr-2" />
           Download Report
         </button>
@@ -248,66 +248,30 @@ export default function Dashboard() {
         {stats.map((item) => (
           <div
             key={item.name}
-            className="relative overflow-hidden rounded-xl bg-white p-6 shadow-lg"
+            className="relative overflow-hidden rounded-xl bg-white dark:bg-gray-800 p-6 shadow-lg dark:shadow-gray-900/20"
           >
             <dt>
-              <div
-                className={classNames(
-                  "absolute rounded-xl p-3",
-                  item.name === "Active Modules"
-                    ? "bg-primary-400"
-                    : "bg-secondary-50"
-                )}
-              >
-                <item.icon
-                  className={classNames(
-                    "h-6 w-6",
-                    item.name === "Active Modules"
-                      ? "text-white"
-                      : "text-primary-500"
-                  )}
-                  aria-hidden="true"
-                />
+              <div className="absolute rounded-xl p-3 bg-gradient-to-r from-primary-400 to-primary-600 dark:from-primary-500 dark:to-primary-700">
+                <item.icon className="h-6 w-6 text-white" aria-hidden="true" />
               </div>
               <div className="ml-16">
-                <p
-                  className={classNames(
-                    "truncate text-sm font-medium",
-                    item.name === "Active Modules"
-                      ? "text-primary-100"
-                      : "text-gray-500"
-                  )}
-                >
+                <p className="truncate text-sm font-medium text-gray-500 dark:text-gray-400">
                   {item.name}
                 </p>
-                <p
-                  className={classNames(
-                    "text-xs mt-1",
-                    item.name === "Active Modules"
-                      ? "text-primary-200"
-                      : "text-gray-400"
-                  )}
-                >
+                <p className="text-xs mt-1 text-gray-400 dark:text-gray-500">
                   {item.subtitle}
                 </p>
               </div>
             </dt>
             <dd className="ml-16 mt-6 flex items-baseline">
-              <p
-                className={classNames(
-                  "text-2xl font-semibold",
-                  item.name === "Active Modules"
-                    ? "text-white"
-                    : "text-gray-900"
-                )}
-              >
+              <p className="text-xl font-semibold text-gray-900 dark:text-white">
                 {item.value}
               </p>
               <p
                 className={classNames(
                   item.changeType === "positive"
-                    ? "bg-success-50 text-success-700"
-                    : "bg-error-50 text-error-700",
+                    ? "bg-success-50 dark:bg-success-900/30 text-success-700 dark:text-success-400"
+                    : "bg-error-50 dark:bg-error-900/30 text-error-700 dark:text-error-400",
                   "ml-2 inline-flex items-baseline rounded-full px-2.5 py-0.5 text-sm font-medium"
                 )}
               >
@@ -331,17 +295,17 @@ export default function Dashboard() {
 
       {/* Charts Grid */}
       <div className="grid grid-cols-1 gap-8 lg:grid-cols-2">
-        <div className="rounded-xl bg-white p-6 shadow-lg">
+        <div className="rounded-xl bg-white dark:bg-gray-800 p-6 shadow-lg dark:shadow-gray-900/20">
           <div className="flex items-center justify-between mb-6">
             <div>
-              <h3 className="text-xl font-semibold text-gray-900">
+              <h3 className="text-xl font-semibold text-gray-900 dark:text-white">
                 Module Usage Trends
               </h3>
-              <p className="text-sm text-gray-500 mt-1">
+              <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">
                 Track module activation and usage
               </p>
             </div>
-            <select className="form-select text-sm rounded-xl bg-white shadow-[0_2px_8px_-3px_rgba(0,0,0,0.07)] hover:shadow-[0_4px_12px_-2px_rgba(0,0,0,0.08)] px-3 py-2 text-gray-700 focus:outline-none focus:ring-2 focus:ring-[#6E62E5] transition-all duration-200">
+            <select className="form-select text-sm rounded-xl bg-white dark:bg-gray-700 px-3 py-2 text-gray-700 dark:text-gray-200 focus:outline-none focus:ring-2 focus:ring-[#6E62E5] transition-all duration-200">
               <option>This year</option>
               <option>Last year</option>
             </select>
@@ -351,17 +315,17 @@ export default function Dashboard() {
           </div>
         </div>
 
-        <div className="rounded-xl bg-white p-6 shadow-lg">
+        <div className="rounded-xl bg-white dark:bg-gray-800 p-6 shadow-lg dark:shadow-gray-900/20">
           <div className="flex items-center justify-between mb-6">
             <div>
-              <h3 className="text-xl font-semibold text-gray-900">
+              <h3 className="text-xl font-semibold text-gray-900 dark:text-white">
                 API Usage by Module
               </h3>
-              <p className="text-sm text-gray-500 mt-1">
+              <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">
                 Track API consumption
               </p>
             </div>
-            <select className="form-select text-sm rounded-xl bg-white shadow-[0_2px_8px_-3px_rgba(0,0,0,0.07)] hover:shadow-[0_4px_12px_-2px_rgba(0,0,0,0.08)] px-3 py-2 text-gray-700 focus:outline-none focus:ring-2 focus:ring-[#6E62E5] transition-all duration-200">
+            <select className="form-select text-sm rounded-xl bg-white dark:bg-gray-700 px-3 py-2 text-gray-700 dark:text-gray-200 focus:outline-none focus:ring-2 focus:ring-[#6E62E5] transition-all duration-200">
               <option>Today</option>
               <option>This week</option>
             </select>
@@ -373,17 +337,17 @@ export default function Dashboard() {
       </div>
 
       <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
-        <div className="rounded-xl bg-white p-6 shadow-lg lg:col-span-1">
+        <div className="rounded-xl bg-white dark:bg-gray-800 p-6 shadow-lg dark:shadow-gray-900/20 lg:col-span-1">
           <div className="flex items-center justify-between mb-6">
             <div>
-              <h3 className="text-xl font-semibold text-gray-900">
+              <h3 className="text-xl font-semibold text-gray-900 dark:text-white">
                 Module Distribution
               </h3>
-              <p className="text-sm text-gray-500 mt-1">
+              <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">
                 Track module usage distribution
               </p>
             </div>
-            <select className="form-select text-sm rounded-xl bg-white shadow-[0_2px_8px_-3px_rgba(0,0,0,0.07)] hover:shadow-[0_4px_12px_-2px_rgba(0,0,0,0.08)] px-3 py-2 text-gray-700 focus:outline-none focus:ring-2 focus:ring-[#6E62E5] transition-all duration-200">
+            <select className="form-select text-sm rounded-xl bg-white dark:bg-gray-700 px-3 py-2 text-gray-700 dark:text-gray-200 focus:outline-none focus:ring-2 focus:ring-[#6E62E5] transition-all duration-200">
               <option>Today</option>
               <option>This week</option>
             </select>
@@ -394,13 +358,13 @@ export default function Dashboard() {
         </div>
 
         {/* Software Status Table */}
-        <div className="rounded-xl bg-white shadow-lg lg:col-span-2">
+        <div className="rounded-xl bg-white dark:bg-gray-800 shadow-lg dark:shadow-gray-900/20 lg:col-span-2">
           <div className="flex items-center justify-between mb-6 p-6">
             <div>
-              <h3 className="text-xl font-semibold text-gray-900">
+              <h3 className="text-xl font-semibold text-gray-900 dark:text-white">
                 Module Status
               </h3>
-              <p className="text-sm text-gray-500 mt-1">
+              <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">
                 Track module health and performance
               </p>
             </div>
@@ -408,47 +372,47 @@ export default function Dashboard() {
           <div className="overflow-x-auto">
             <table className="w-full">
               <thead>
-                <tr className="border-b border-gray-100">
-                  <th className="text-left py-3 px-6 text-sm font-medium text-gray-500">
+                <tr className="border-b border-gray-100 dark:border-gray-700">
+                  <th className="text-left py-3 px-6 text-sm font-medium text-gray-500 dark:text-gray-400">
                     Name
                   </th>
-                  <th className="text-left py-3 px-6 text-sm font-medium text-gray-500">
+                  <th className="text-left py-3 px-6 text-sm font-medium text-gray-500 dark:text-gray-400">
                     Status
                   </th>
-                  <th className="text-left py-3 px-6 text-sm font-medium text-gray-500">
+                  <th className="text-left py-3 px-6 text-sm font-medium text-gray-500 dark:text-gray-400">
                     API Calls
                   </th>
-                  <th className="text-left py-3 px-6 text-sm font-medium text-gray-500">
+                  <th className="text-left py-3 px-6 text-sm font-medium text-gray-500 dark:text-gray-400">
                     Last Updated
                   </th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-gray-50">
+              <tbody className="divide-y divide-gray-50 dark:divide-gray-700">
                 {softwareList.map((software) => (
                   <tr
                     key={software.name}
-                    className="hover:bg-gray-50/50 transition-colors duration-150"
+                    className="hover:bg-gray-50/50 dark:hover:bg-gray-700/50 transition-colors duration-150"
                   >
-                    <td className="py-3 px-6 text-sm font-medium text-gray-900">
+                    <td className="py-3 px-6 text-sm font-medium text-gray-900 dark:text-white">
                       {software.name}
                     </td>
                     <td className="py-3 px-6">
                       <span
                         className={`inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium ${
                           software.status === "Active"
-                            ? "bg-success-50 text-success-700"
+                            ? "bg-success-50 dark:bg-success-900/30 text-success-700 dark:text-success-400"
                             : software.status === "Maintenance"
-                            ? "bg-error-50 text-error-700"
-                            : "bg-gray-100 text-gray-600"
+                            ? "bg-error-50 dark:bg-error-900/30 text-error-700 dark:text-error-400"
+                            : "bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-400"
                         }`}
                       >
                         {software.status}
                       </span>
                     </td>
-                    <td className="py-3 px-6 text-sm text-gray-500">
+                    <td className="py-3 px-6 text-sm text-gray-500 dark:text-gray-400">
                       {software.users.toLocaleString()}
                     </td>
-                    <td className="py-3 px-6 text-sm text-gray-500">
+                    <td className="py-3 px-6 text-sm text-gray-500 dark:text-gray-400">
                       {software.lastUpdated}
                     </td>
                   </tr>
