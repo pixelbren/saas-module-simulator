@@ -1,14 +1,55 @@
 # SaaS Module Simulator
 
-A live, interactive library of reusable software modules that showcases UX/UI patterns and backend logic examples.
+A modern, modular SaaS application that demonstrates various software components commonly used in SaaS products. Built with Next.js 14, TypeScript, and Tailwind CSS.
 
 ## Features
 
-- Authentication (Email/Password, Google, GitHub)
-- Dashboard with overview widgets
-- User Profile Management
-- Settings Management
-- Payment Integration (Stripe)
+- 🔐 **Authentication Module**
+
+  - Email/Password authentication
+  - OAuth integration (Google, GitHub)
+  - Session management
+  - Protected routes
+
+- 📊 **Dashboard**
+
+  - Real-time module statistics
+  - Interactive charts and graphs
+  - Module status monitoring
+  - API usage tracking
+
+- 👤 **User Profile**
+
+  - Profile management
+  - Avatar upload
+  - Role-based access
+  - User preferences
+
+- ⚙️ **Settings**
+
+  - Account settings
+  - Notification preferences
+  - Security settings
+  - Two-factor authentication
+
+- 💳 **Billing**
+  - Subscription management
+  - Payment processing
+  - Usage tracking
+  - Billing history
+
+## Tech Stack
+
+- **Framework**: Next.js 14 with App Router
+- **Language**: TypeScript
+- **Styling**: Tailwind CSS
+- **Authentication**: NextAuth.js
+- **Charts**: Chart.js with react-chartjs-2
+- **Icons**: Heroicons
+- **UI Components**: Custom components with Tailwind
+- **State Management**: React Hooks
+- **Form Handling**: React Hook Form
+- **Notifications**: React Hot Toast
 
 ## Getting Started
 
@@ -16,32 +57,37 @@ A live, interactive library of reusable software modules that showcases UX/UI pa
 
 - Node.js 18.x or later
 - npm or yarn
-- Google OAuth credentials
-- GitHub OAuth credentials
-- Stripe account (for payment features)
+- Git
 
 ### Installation
 
-1. Clone the repository
+1. Clone the repository:
+
+   ```bash
+   git clone https://github.com/YOUR_USERNAME/saas-module-simulator.git
+   cd saas-module-simulator
+   ```
+
 2. Install dependencies:
 
    ```bash
    npm install
+   # or
+   yarn install
    ```
 
-3. Create a `.env.local` file in the root directory with the following variables:
+3. Create a `.env.local` file in the root directory:
 
-   ```
+   ```env
    NEXTAUTH_URL=http://localhost:3000
-   NEXTAUTH_SECRET=your-secret-key-here
+   NEXTAUTH_SECRET=your-secret-key
 
-   # Google OAuth
+   # OAuth providers
    GOOGLE_CLIENT_ID=your-google-client-id
    GOOGLE_CLIENT_SECRET=your-google-client-secret
 
-   # GitHub OAuth
-   GITHUB_ID=your-github-client-id
-   GITHUB_SECRET=your-github-client-secret
+   GITHUB_ID=your-github-id
+   GITHUB_SECRET=your-github-secret
 
    # Stripe
    STRIPE_PUBLIC_KEY=your-stripe-public-key
@@ -49,41 +95,44 @@ A live, interactive library of reusable software modules that showcases UX/UI pa
    STRIPE_WEBHOOK_SECRET=your-stripe-webhook-secret
    ```
 
-4. Run the development server:
+4. Start the development server:
 
    ```bash
    npm run dev
+   # or
+   yarn dev
    ```
 
-5. Open [http://localhost:3000](http://localhost:3000) in your browser
+5. Open [http://localhost:3000](http://localhost:3000) in your browser.
 
 ## Project Structure
 
-- `src/app/` - Next.js app router pages and layouts
-- `src/components/` - Reusable UI components
-- `src/lib/` - Utility functions and shared logic
-- `src/types/` - TypeScript type definitions
-
-## Authentication
-
-The app supports multiple authentication methods:
-
-- Email/Password
-- Google OAuth
-- GitHub OAuth
-
-## Payment Integration
-
-The app uses Stripe for payment processing. To enable payment features:
-
-1. Create a Stripe account
-2. Add your Stripe API keys to the `.env.local` file
-3. Configure webhook endpoints in your Stripe dashboard
+```
+src/
+├── app/                    # Next.js 14 app directory
+│   ├── api/               # API routes
+│   ├── auth/              # Authentication pages
+│   ├── dashboard/         # Dashboard and module pages
+│   └── layout.tsx         # Root layout
+├── components/            # Reusable components
+├── types/                 # TypeScript type definitions
+└── middleware.ts         # NextAuth middleware
+```
 
 ## Contributing
 
 1. Fork the repository
-2. Create your feature branch
-3. Commit your changes
-4. Push to the branch
-5. Create a new Pull Request
+2. Create your feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add some amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## Acknowledgments
+
+- Next.js team for the amazing framework
+- Vercel for the deployment platform
+- The open-source community for the incredible tools
