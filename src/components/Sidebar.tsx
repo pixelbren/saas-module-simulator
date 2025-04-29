@@ -9,6 +9,7 @@ import {
   CreditCardIcon,
   ChartBarIcon,
   XMarkIcon,
+  MapPinIcon,
 } from "@heroicons/react/24/outline";
 
 interface NavigationItem {
@@ -24,6 +25,7 @@ interface SidebarProps {
 
 const navigation: NavigationItem[] = [
   { name: "Overview", href: "/dashboard", icon: HomeIcon },
+  { name: "Route Dashboard", href: "/dashboard/route", icon: MapPinIcon },
   { name: "Profile", href: "/dashboard/profile", icon: UserCircleIcon },
   { name: "Analytics", href: "/dashboard/analytics", icon: ChartBarIcon },
   { name: "Billing", href: "/dashboard/billing", icon: CreditCardIcon },
@@ -35,8 +37,7 @@ export default function Sidebar({ isMobile = false, onClose }: SidebarProps) {
 
   const content = (
     <div className="flex h-full flex-col bg-white dark:bg-gray-800">
-      {/* Logo section */}
-      <div className="flex h-16 items-center gap-2 px-6">
+      <div className="flex h-16 items-center gap-2 px-6 border-b border-gray-100 dark:border-gray-700">
         <Link href="/dashboard" className="flex items-center gap-2">
           <span className="text-xl font-semibold text-primary-600 dark:text-primary-400">
             YSaaS
@@ -47,6 +48,7 @@ export default function Sidebar({ isMobile = false, onClose }: SidebarProps) {
         </Link>
         {isMobile && onClose && (
           <button
+            aria-label="Close sidebar"
             onClick={onClose}
             className="ml-auto rounded-lg p-2 text-gray-500 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700"
           >
@@ -55,37 +57,42 @@ export default function Sidebar({ isMobile = false, onClose }: SidebarProps) {
         )}
       </div>
 
-      {/* Navigation */}
-      <nav className="flex-1 space-y-1 px-3 py-4">
-        {navigation.map((item) => {
-          const isActive = pathname === item.href;
-          return (
-            <Link
-              key={item.name}
-              href={item.href}
-              onClick={isMobile ? onClose : undefined}
-              className={`group flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium transition-colors ${
-                isActive
-                  ? "bg-primary-400/10 text-primary-600 dark:bg-primary-500/10 dark:text-primary-400"
-                  : "text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700"
-              }`}
-            >
-              <item.icon
-                className={`h-5 w-5 flex-shrink-0 ${
+      <div className="flex-1 overflow-y-auto">
+        <nav
+          role="navigation"
+          aria-label="Sidebar navigation"
+          className="space-y-1 px-4 py-4"
+        >
+          {navigation.map((item) => {
+            const isActive = pathname === item.href;
+            return (
+              <Link
+                key={item.name}
+                href={item.href}
+                onClick={isMobile ? onClose : undefined}
+                aria-current={isActive ? "page" : undefined}
+                className={`group flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium transition-colors ${
                   isActive
-                    ? "text-primary-600 dark:text-primary-400"
-                    : "text-gray-400 group-hover:text-gray-600 dark:text-gray-500 dark:group-hover:text-gray-400"
+                    ? "bg-primary-400/10 text-primary-600 dark:bg-primary-500/10 dark:text-primary-400"
+                    : "text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700"
                 }`}
-                aria-hidden="true"
-              />
-              {item.name}
-            </Link>
-          );
-        })}
-      </nav>
+              >
+                <item.icon
+                  className={`h-5 w-5 flex-shrink-0 ${
+                    isActive
+                      ? "text-primary-600 dark:text-primary-400"
+                      : "text-gray-400 group-hover:text-gray-600 dark:text-gray-500 dark:group-hover:text-gray-400"
+                  }`}
+                  aria-hidden="true"
+                />
+                {item.name}
+              </Link>
+            );
+          })}
+        </nav>
+      </div>
 
-      {/* Help section */}
-      <div className="mx-3 mb-4 rounded-xl bg-primary-400/5 p-4 dark:bg-primary-500/5">
+      <div className="mx-4 mb-4 rounded-xl bg-primary-400/5 p-4 dark:bg-primary-500/5">
         <h3 className="text-sm font-medium text-gray-900 dark:text-white">
           Help Center
         </h3>
