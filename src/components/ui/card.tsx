@@ -1,16 +1,23 @@
+import * as React from "react";
+
 import { cn } from "@/lib/utils";
-import { HTMLAttributes } from "react";
 
-interface CardProps extends HTMLAttributes<HTMLDivElement> {}
+interface CardProps extends React.HTMLAttributes<HTMLDivElement> {
+  className?: string;
+}
 
-export function Card({ className, ...props }: CardProps) {
-  return (
+const Card = React.forwardRef<HTMLDivElement, CardProps>(
+  ({ className, ...props }, ref) => (
     <div
+      ref={ref}
       className={cn(
-        "rounded-lg border border-gray-200 bg-white shadow-sm dark:border-gray-700 dark:bg-gray-800",
+        "bg-white rounded-2xl p-4 shadow-lg hover:shadow-xl transition-shadow dark:bg-gray-800",
         className
       )}
       {...props}
     />
-  );
-}
+  )
+);
+Card.displayName = "Card";
+
+export { Card };

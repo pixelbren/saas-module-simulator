@@ -1,5 +1,6 @@
 import { Card } from "@/components/ui/card";
 import { LineChart } from "@/components/charts/LineChart";
+import Image from "next/image";
 
 export default function GameDashboard() {
   return (
@@ -12,7 +13,7 @@ export default function GameDashboard() {
           </h1>
 
           {/* Level Card */}
-          <Card className="bg-white rounded-2xl p-4 shadow-lg hover:shadow-xl transition-shadow">
+          <Card>
             <div className="flex items-center gap-4">
               <div className="text-[#FFA00F]">
                 <svg width="24" height="24" viewBox="0 0 32 32" fill="none">
@@ -40,7 +41,7 @@ export default function GameDashboard() {
           </Card>
 
           {/* Rank Card */}
-          <Card className="bg-white rounded-2xl p-4 shadow-lg hover:shadow-xl transition-shadow">
+          <Card>
             <div className="flex items-center gap-4">
               <div className="text-[#FFA00F]">
                 <svg width="24" height="24" viewBox="0 0 32 32" fill="none">
@@ -63,37 +64,43 @@ export default function GameDashboard() {
           </Card>
 
           {/* Badges Card */}
-          <Card className="bg-white rounded-2xl p-4 shadow-lg hover:shadow-xl transition-shadow h-[120px] items-center">
+          <Card className="h-[120px] items-center">
             <div className="flex gap-3 justify-center items-center">
               <div className="relative w-12 h-12 flex items-center justify-center">
-                <img
+                <Image
                   src="/badge-power.png"
                   alt="Power Badge"
-                  className="w-auto h-auto object-contain"
+                  width={48}
+                  height={48}
+                  className="object-contain"
                 />
               </div>
               <div className="relative w-12 h-12 flex items-center justify-center">
-                <img
+                <Image
                   src="/badge-learning.png"
                   alt="Learning Badge"
-                  className="w-auto h-auto object-contain"
+                  width={48}
+                  height={48}
+                  className="object-contain"
                 />
                 <div className="absolute -top-2 -right-2 bg-[#FFA00F] text-white text-xs rounded-full w-4 h-4 flex items-center justify-center">
                   +5
                 </div>
               </div>
               <div className="relative w-12 h-12 flex items-center justify-center">
-                <img
+                <Image
                   src="/badge-speed.png"
                   alt="Speed Badge"
-                  className="w-auto h-auto object-contain opacity-40"
+                  width={48}
+                  height={48}
+                  className="object-contain opacity-40"
                 />
               </div>
             </div>
           </Card>
 
           {/* Training Chart */}
-          <Card className="bg-white rounded-2xl p-4 shadow-lg hover:shadow-xl transition-shadow">
+          <Card>
             <div className="space-y-4">
               <div className="flex justify-between items-center">
                 <h2 className="text-lg font-alumni-sans font-semibold text-[#202049]">
@@ -122,10 +129,13 @@ export default function GameDashboard() {
         {/* Center Column - Character */}
         <div className="flex justify-center items-start h-[calc(100vh-2rem)]">
           <div className="relative h-full flex items-start pt-4">
-            <img
+            <Image
               src="/character.png"
               alt="Your character"
-              className=" w-auto height-[100px] object-contain"
+              width={300}
+              height={500}
+              className="w-[230px] height-[400px]"
+              priority
             />
           </div>
         </div>
@@ -133,7 +143,7 @@ export default function GameDashboard() {
         {/* Right Column */}
         <div className="flex flex-col gap-3">
           {/* Weekly Streak */}
-          <Card className="bg-white rounded-2xl p-4 shadow-lg hover:shadow-xl transition-shadow">
+          <Card>
             <div className="space-y-4">
               <div className="flex justify-between items-center">
                 <h3 className="text-lg font-alumni-sans font-semibold text-[#202049]">
@@ -212,7 +222,7 @@ export default function GameDashboard() {
           </Card>
 
           {/* Daily Quest */}
-          <Card className="bg-white rounded-2xl p-4 shadow-lg hover:shadow-xl transition-shadow">
+          <Card>
             <h3 className="text-lg font-alumni-sans font-semibold text-[#202049] mb-4">
               Daily Quest
             </h3>
@@ -284,7 +294,7 @@ export default function GameDashboard() {
           </Card>
 
           {/* Current Training */}
-          <Card className="bg-white rounded-2xl p-4 shadow-lg hover:shadow-xl transition-shadow">
+          <Card>
             <div className="space-y-3">
               <div>
                 <h3 className="text-sm font-medium text-[#202049]">
