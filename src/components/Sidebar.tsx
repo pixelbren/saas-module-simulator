@@ -10,6 +10,7 @@ import {
   ChartBarIcon,
   XMarkIcon,
   MapPinIcon,
+  PlayIcon,
 } from "@heroicons/react/24/outline";
 
 interface NavigationItem {
@@ -26,6 +27,7 @@ interface SidebarProps {
 const navigation: NavigationItem[] = [
   { name: "Overview", href: "/dashboard", icon: HomeIcon },
   { name: "Route Dashboard", href: "/dashboard/route", icon: MapPinIcon },
+  { name: "Game Dashboard", href: "/dashboard/game", icon: PlayIcon },
   { name: "Profile", href: "/dashboard/profile", icon: UserCircleIcon },
   { name: "Analytics", href: "/dashboard/analytics", icon: ChartBarIcon },
   { name: "Billing", href: "/dashboard/billing", icon: CreditCardIcon },

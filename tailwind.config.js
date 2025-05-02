@@ -8,15 +8,18 @@ module.exports = {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        "alumni-sans": ["Alumni Sans", "sans-serif"],
+      },
       colors: {
         primary: {
+          400: "#383AD8",
+          500: "#2C2EA6",
+          600: "#1F2075",
           50: "#f0f9ff",
           100: "#e0f2fe",
           200: "#bae6fd",
           300: "#7dd3fc",
-          400: "#38bdf8",
-          500: "#0ea5e9",
-          600: "#0284c7",
           700: "#0369a1",
           800: "#075985",
           900: "#0c4a6e",

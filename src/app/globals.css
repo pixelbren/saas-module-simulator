@@ -314,3 +314,15 @@
     @apply shadow-lg;
   }
 }
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-alumni-sans: var(--font-alumni-sans);
+}
+
+.font-alumni-sans {
+  font-family: var(--font-alumni-sans);
+}
