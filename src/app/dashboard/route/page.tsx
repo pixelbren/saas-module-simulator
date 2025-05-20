@@ -87,7 +87,7 @@ export default function RouteDashboard() {
             <div className="flex items-center gap-3">
               <Button
                 onClick={() => setShowAll(!showAll)}
-                variant={showAll ? "default" : "outline"}
+                variant={showAll ? "primary" : "outline"}
                 size="sm"
               >
                 Show all

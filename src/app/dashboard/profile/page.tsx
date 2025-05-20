@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import toast from "react-hot-toast";
-import { UserCircleIcon, KeyIcon, BellIcon } from "@heroicons/react/24/outline";
+import { UserCircleIcon, BellIcon } from "@heroicons/react/24/outline";
 import { Button } from "@/components/ui/Button";
 
 export default function Profile() {

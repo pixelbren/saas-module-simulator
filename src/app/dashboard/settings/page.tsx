@@ -185,7 +185,7 @@ export default function Settings() {
                 disabled={isLoading}
                 variant="primary"
                 size="sm"
-                icon="save"
+                iconRight="Save"
               >
                 {isLoading ? "Saving..." : "Save Changes"}
               </Button>
