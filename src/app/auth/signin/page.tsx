@@ -5,6 +5,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
 import Link from "next/link";
+import { Button } from "@/components/ui/Button";
 
 // Test credentials
 const TEST_CREDENTIALS = {
@@ -123,13 +124,13 @@ export default function SignIn() {
           </div>
 
           <div>
-            <button
+            <Button
               type="submit"
               disabled={isLoading}
               className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
             >
               {isLoading ? "Signing in..." : "Sign in"}
-            </button>
+            </Button>
           </div>
         </form>
 

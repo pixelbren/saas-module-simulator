@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { MapPinIcon, ChevronRightIcon } from "@heroicons/react/24/outline";
+import { Button } from "@/components/ui/Button";
 
 interface Site {
   id: number;
@@ -84,21 +85,13 @@ export default function RouteDashboard() {
               Sites Schedule
             </h2>
             <div className="flex items-center gap-3">
-              <button
+              <Button
                 onClick={() => setShowAll(!showAll)}
-                className={`relative inline-flex h-5 w-9 items-center rounded-full transition-colors ${
-                  showAll ? "bg-green-500" : "bg-gray-200 dark:bg-gray-600"
-                }`}
+                variant={showAll ? "default" : "outline"}
+                size="sm"
               >
-                <span
-                  className={`inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${
-                    showAll ? "translate-x-4" : "translate-x-1"
-                  }`}
-                />
-              </button>
-              <span className="text-sm text-gray-600 dark:text-gray-400">
                 Show all
-              </span>
+              </Button>
             </div>
           </div>
 

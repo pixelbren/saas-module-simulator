@@ -1,19 +1,20 @@
 import { Card } from "@/components/ui/card";
 import { LineChart } from "@/components/charts/LineChart";
 import Image from "next/image";
+import { Button } from "@/components/ui/Button";
 
 export default function GameDashboard() {
   return (
-    <div className="min-h-screen p-4 max-w-[1200px] mx-auto">
-      <div className="grid grid-cols-[minmax(300px,1fr)_auto_minmax(300px,1fr)] gap-4 min-h-[calc(100vh-2rem)]">
+    <div className="min-h-screen max-w-[1200px] mx-auto">
+      <div className="grid grid-cols-1 md:grid-cols-[1fr_auto] lg:grid-cols-[minmax(300px,1fr)_auto_minmax(300px,1fr)] gap-6 min-h-[calc(100vh-2rem)]">
         {/* Left Column */}
         <div className="flex flex-col gap-3">
-          <h1 className="text-5xl font-semibold font-alumni-sans">
+          <h1 className="text-4xl md:text-5xl font-semibold font-alumni-sans text-[#202049] dark:text-white">
             Welcome, Bren
           </h1>
 
           {/* Level Card */}
-          <Card>
+          <Card className="bg-white dark:bg-gray-800">
             <div className="flex items-center gap-4">
               <div className="text-[#FFA00F]">
                 <svg width="24" height="24" viewBox="0 0 32 32" fill="none">
@@ -28,12 +29,14 @@ export default function GameDashboard() {
               </div>
               <div className="flex-1">
                 <div className="flex justify-between items-center mb-2">
-                  <span className="text-2xl font-alumni-sans font-semibold text-[#202049]">
+                  <span className="text-2xl font-alumni-sans font-semibold text-[#202049] dark:text-white">
                     LVL 20
                   </span>
-                  <span className="text-xs text-[#737580]">1320/2000</span>
+                  <span className="text-xs text-[#737580] dark:text-gray-400">
+                    1320/2000
+                  </span>
                 </div>
-                <div className="h-2 w-full bg-[#EDF3FF] rounded-full">
+                <div className="h-2 w-full bg-[#EDF3FF] dark:bg-gray-700 rounded-full">
                   <div className="h-full w-[66%] bg-[#383AD8] rounded-full"></div>
                 </div>
               </div>
@@ -41,7 +44,7 @@ export default function GameDashboard() {
           </Card>
 
           {/* Rank Card */}
-          <Card>
+          <Card className="bg-white dark:bg-gray-800">
             <div className="flex items-center gap-4">
               <div className="text-[#FFA00F]">
                 <svg width="24" height="24" viewBox="0 0 32 32" fill="none">
@@ -55,16 +58,18 @@ export default function GameDashboard() {
                 </svg>
               </div>
               <div>
-                <span className="text-2xl font-alumni-sans font-semibold text-[#202049] block">
+                <span className="text-2xl font-alumni-sans font-semibold text-[#202049] dark:text-white block">
                   14th
                 </span>
-                <span className="text-xs text-[#737580]">Current rank</span>
+                <span className="text-xs text-[#737580] dark:text-gray-400">
+                  Current rank
+                </span>
               </div>
             </div>
           </Card>
 
           {/* Badges Card */}
-          <Card className="h-[120px] items-center">
+          <Card className="h-[120px] items-center bg-white dark:bg-gray-800">
             <div className="flex gap-3 justify-center items-center">
               <div className="relative w-12 h-12 flex items-center justify-center">
                 <Image
@@ -100,13 +105,17 @@ export default function GameDashboard() {
           </Card>
 
           {/* Training Chart */}
-          <Card>
+          <Card className="bg-white dark:bg-gray-800">
             <div className="space-y-4">
               <div className="flex justify-between items-center">
-                <h2 className="text-lg font-alumni-sans font-semibold text-[#202049]">
+                <h2 className="text-lg font-alumni-sans font-semibold text-[#202049] dark:text-white">
                   Your Training
                 </h2>
-                <button className="flex items-center gap-2 text-xs text-[#737580]">
+                <Button
+                  variant="outline"
+                  size="sm"
+                  className="flex items-center gap-2 text-xs text-[#737580] dark:text-gray-400"
+                >
                   This Month
                   <svg width="12" height="12" viewBox="0 0 16 16" fill="none">
                     <path
@@ -117,7 +126,7 @@ export default function GameDashboard() {
                       strokeLinejoin="round"
                     />
                   </svg>
-                </button>
+                </Button>
               </div>
               <div className="h-[140px]">
                 <LineChart />
@@ -127,14 +136,14 @@ export default function GameDashboard() {
         </div>
 
         {/* Center Column - Character */}
-        <div className="flex justify-center items-start h-[calc(100vh-2rem)]">
+        <div className="hidden md:flex justify-center items-start h-[calc(100vh-2rem)]">
           <div className="relative h-full flex items-start pt-4">
             <Image
               src="/character.png"
               alt="Your character"
               width={300}
               height={500}
-              className="w-[230px] height-[400px]"
+              className="w-[180px] lg:w-[230px] height-[400px]"
               priority
             />
           </div>
@@ -143,20 +152,24 @@ export default function GameDashboard() {
         {/* Right Column */}
         <div className="flex flex-col gap-3">
           {/* Weekly Streak */}
-          <Card>
+          <Card className="bg-white dark:bg-gray-800">
             <div className="space-y-4">
               <div className="flex justify-between items-center">
-                <h3 className="text-lg font-alumni-sans font-semibold text-[#202049]">
+                <h3 className="text-lg font-alumni-sans font-semibold text-[#202049] dark:text-white">
                   Weekly Streak
                 </h3>
               </div>
               <div className="space-y-4">
                 <div className="flex justify-between items-center">
-                  <h4 className="font-medium text-xs text-[#202049]">
+                  <h4 className="font-medium text-xs text-[#202049] dark:text-white">
                     January 2025
                   </h4>
                   <div className="flex gap-2">
-                    <button className="p-1 text-[#737580] hover:text-[#202049]">
+                    <Button
+                      variant="outline"
+                      size="sm"
+                      className="p-1 text-[#737580] hover:text-[#202049] dark:text-gray-400 dark:hover:text-white"
+                    >
                       <svg
                         width="12"
                         height="12"
@@ -171,8 +184,12 @@ export default function GameDashboard() {
                           strokeLinejoin="round"
                         />
                       </svg>
-                    </button>
-                    <button className="p-1 text-[#737580] hover:text-[#202049]">
+                    </Button>
+                    <Button
+                      variant="outline"
+                      size="sm"
+                      className="p-1 text-[#737580] hover:text-[#202049] dark:text-gray-400 dark:hover:text-white"
+                    >
                       <svg
                         width="12"
                         height="12"
@@ -187,11 +204,11 @@ export default function GameDashboard() {
                           strokeLinejoin="round"
                         />
                       </svg>
-                    </button>
+                    </Button>
                   </div>
                 </div>
 
-                <div className="flex justify-between text-xs font-medium text-[#737580]">
+                <div className="flex justify-between text-xs font-medium text-[#737580] dark:text-gray-400">
                   <span>MON</span>
                   <span>TUE</span>
                   <span>WED</span>
@@ -208,7 +225,7 @@ export default function GameDashboard() {
                   </div>
                   <div className="w-8 h-8 rounded-full bg-[#15A0E5] flex items-center justify-center text-white text-xs font-medium relative">
                     1
-                    <div className="absolute -top-1 -right-1 w-2 h-2 rounded-full bg-[#15A0E5] border-2 border-white"></div>
+                    <div className="absolute -top-1 -right-1 w-2 h-2 rounded-full bg-[#15A0E5] border-2 border-white dark:border-gray-800"></div>
                   </div>
                   <div className="w-8 h-8 rounded-full bg-[#FFA00F] flex items-center justify-center text-white text-xs font-medium">
                     29
@@ -222,8 +239,8 @@ export default function GameDashboard() {
           </Card>
 
           {/* Daily Quest */}
-          <Card>
-            <h3 className="text-lg font-alumni-sans font-semibold text-[#202049] mb-4">
+          <Card className="bg-white dark:bg-gray-800">
+            <h3 className="text-lg font-alumni-sans font-semibold text-[#202049] dark:text-white mb-4">
               Daily Quest
             </h3>
             <div className="space-y-3">
@@ -240,10 +257,10 @@ export default function GameDashboard() {
                   </svg>
                 </div>
                 <div className="flex-1">
-                  <p className="text-sm font-medium text-[#202049] mb-1">
+                  <p className="text-sm font-medium text-[#202049] dark:text-white mb-1">
                     Finish onboarding
                   </p>
-                  <div className="h-2 w-full bg-[#EDF3FF] rounded-full">
+                  <div className="h-2 w-full bg-[#EDF3FF] dark:bg-gray-700 rounded-full">
                     <div className="h-full w-[75%] bg-[#383AD8] rounded-full"></div>
                   </div>
                 </div>
@@ -256,10 +273,10 @@ export default function GameDashboard() {
                   </svg>
                 </div>
                 <div className="flex-1">
-                  <p className="text-sm font-medium text-[#202049] mb-1">
+                  <p className="text-sm font-medium text-[#202049] dark:text-white mb-1">
                     Earn 100 XP
                   </p>
-                  <div className="h-2 w-full bg-[#EDF3FF] rounded-full">
+                  <div className="h-2 w-full bg-[#EDF3FF] dark:bg-gray-700 rounded-full">
                     <div className="h-full w-[45%] bg-[#383AD8] rounded-full"></div>
                   </div>
                 </div>
@@ -282,10 +299,10 @@ export default function GameDashboard() {
                   </svg>
                 </div>
                 <div className="flex-1">
-                  <p className="text-sm font-medium text-[#202049] mb-1">
+                  <p className="text-sm font-medium text-[#202049] dark:text-white mb-1">
                     Spend 10 mins
                   </p>
-                  <div className="h-2 w-full bg-[#EDF3FF] rounded-full">
+                  <div className="h-2 w-full bg-[#EDF3FF] dark:bg-gray-700 rounded-full">
                     <div className="h-full w-[25%] bg-[#383AD8] rounded-full"></div>
                   </div>
                 </div>
@@ -294,26 +311,31 @@ export default function GameDashboard() {
           </Card>
 
           {/* Current Training */}
-          <Card>
+          <Card className="bg-white dark:bg-gray-800">
             <div className="space-y-3">
               <div>
-                <h3 className="text-sm font-medium text-[#202049]">
+                <h3 className="text-sm font-medium text-[#202049] dark:text-white">
                   Tactical Empathy
                 </h3>
-                <p className="text-xs text-[#737580]">
+                <p className="text-xs text-[#737580] dark:text-gray-400">
                   Lesson 1 - Active Listening
                 </p>
               </div>
-              <div className="relative h-2 w-full bg-[#EDF3FF] rounded-full">
+              <div className="relative h-2 w-full bg-[#EDF3FF] dark:bg-gray-700 rounded-full">
                 <div className="absolute left-0 top-0 h-full w-[25%] bg-[#383AD8] rounded-full"></div>
-                <span className="absolute -top-5 left-[25%] text-xs text-[#383AD8]">
+                <span className="absolute -top-5 left-[25%] text-xs text-[#383AD8] dark:text-blue-400">
                   25%
                 </span>
               </div>
             </div>
-            <button className="mt-4 w-full bg-[#383AD8] text-white font-medium py-3 px-4 rounded-full hover:bg-[#2C2EA6] transition-colors text-sm">
+            <Button
+              className="mt-4 w-full"
+              variant="primary"
+              size="md"
+              fullWidth
+            >
               Start lesson
-            </button>
+            </Button>
           </Card>
         </div>
       </div>

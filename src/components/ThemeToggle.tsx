@@ -1,11 +1,8 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import {
-  MoonIcon,
-  SunIcon,
-  ComputerDesktopIcon,
-} from "@heroicons/react/24/outline";
+import { Button } from "@/components/ui/Button";
+import { Icon } from "@/components/ui/Icon";
 
 type Theme = "light" | "dark" | "system";
 
@@ -74,18 +71,30 @@ export default function ThemeToggle() {
   if (!mounted) return null;
 
   return (
-    <button
+    <Button
       onClick={toggleTheme}
-      className="rounded-lg p-2 text-gray-500 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700"
+      variant="tertiary"
+      size="sm"
       aria-label="Toggle theme"
+      title={
+        theme === "dark"
+          ? "Switch to system theme"
+          : theme === "light"
+          ? "Switch to dark mode"
+          : "Switch to light mode"
+      }
     >
       {theme === "dark" ? (
-        <SunIcon className="h-5 w-5" />
+        <Icon name="Sun" size={20} className="text-yellow-400" />
       ) : theme === "light" ? (
-        <MoonIcon className="h-5 w-5" />
+        <Icon
+          name="Moon"
+          size={20}
+          className="text-gray-400 dark:text-gray-200"
+        />
       ) : (
-        <ComputerDesktopIcon className="h-5 w-5" />
+        <Icon name="Monitor" size={20} className="text-gray-500" />
       )}
-    </button>
+    </Button>
   );
 }

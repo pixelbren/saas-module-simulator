@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { Toaster } from "react-hot-toast";
-import { Providers } from "./providers";
 import { Alumni_Sans } from "next/font/google";
 
 const alumniSans = Alumni_Sans({
@@ -24,10 +23,8 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning className={alumniSans.variable}>
       <body className="bg-white dark:bg-gray-900">
-        <Providers>
-          <Toaster position="top-right" />
-          {children}
-        </Providers>
+        <Toaster position="top-right" />
+        {children}
       </body>
     </html>
   );

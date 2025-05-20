@@ -1,26 +1,22 @@
 "use client";
 
-import { useSession } from "next-auth/react";
 import { useState } from "react";
 import toast from "react-hot-toast";
 import { UserCircleIcon, KeyIcon, BellIcon } from "@heroicons/react/24/outline";
+import { Button } from "@/components/ui/Button";
 
 export default function Profile() {
-  const { data: session, update } = useSession();
-  const [name, setName] = useState(session?.user?.name || "");
-  const [email] = useState(session?.user?.email || "");
+  const [name, setName] = useState("");
+  const [email] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
-
     try {
-      // TODO: Implement profile update logic
-      // This is a mock implementation
+      // No-op: No actual update logic
       await new Promise((resolve) => setTimeout(resolve, 1000));
-      await update({ name });
-      toast.success("Profile updated successfully");
+      toast.success("Profile updated successfully (mock)");
     } catch (err) {
       toast.error("Failed to update profile");
       console.error("Profile update error:", err);
@@ -46,34 +42,18 @@ export default function Profile() {
               Personal Information
             </h2>
           </div>
-          <form onSubmit={handleSubmit} className="space-y-6">
-            <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
-              <div>
-                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">
-                  First Name
-                </label>
-                <input
-                  type="text"
-                  name="name"
-                  id="name"
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
-                  className="mt-1 block w-full rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 px-3 py-2 text-gray-900 dark:text-white shadow-sm focus:border-primary-500 dark:focus:border-primary-400 focus:outline-none focus:ring-1 focus:ring-primary-500 dark:focus:ring-primary-400"
-                />
-              </div>
-              <div>
-                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">
-                  Last Name
-                </label>
-                <input
-                  type="text"
-                  name="name"
-                  id="name"
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
-                  className="mt-1 block w-full rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 px-3 py-2 text-gray-900 dark:text-white shadow-sm focus:border-primary-500 dark:focus:border-primary-400 focus:outline-none focus:ring-1 focus:ring-primary-500 dark:focus:ring-primary-400"
-                />
-              </div>
+          <form onSubmit={handleSubmit} className="space-y-4">
+            <div>
+              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">
+                Name
+              </label>
+              <input
+                type="text"
+                className="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white shadow-sm focus:border-primary-500 focus:ring-primary-500 sm:text-sm"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                placeholder="Your Name"
+              />
             </div>
             <div>
               <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">
@@ -81,59 +61,15 @@ export default function Profile() {
               </label>
               <input
                 type="email"
-                name="email"
-                id="email"
+                className="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white shadow-sm focus:border-primary-500 focus:ring-primary-500 sm:text-sm"
                 value={email}
                 disabled
-                className="mt-1 block w-full rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 px-3 py-2 text-gray-900 dark:text-white shadow-sm focus:border-primary-500 dark:focus:border-primary-400 focus:outline-none focus:ring-1 focus:ring-primary-500 dark:focus:ring-primary-400"
+                placeholder="your@email.com"
               />
             </div>
-            <div className="flex justify-end">
-              <button
-                type="submit"
-                disabled={isLoading}
-                className="rounded-lg bg-primary-600 px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-primary-500 dark:bg-primary-500 dark:hover:bg-primary-400"
-              >
-                {isLoading ? "Saving..." : "Save Changes"}
-              </button>
-            </div>
-          </form>
-        </div>
-
-        {/* Security - Half width */}
-        <div className="rounded-xl bg-white dark:bg-gray-800 p-6 shadow-lg dark:shadow-gray-900/20">
-          <div className="flex items-center gap-4 mb-6">
-            <div className="rounded-full bg-gray-100 dark:bg-gray-700 p-2">
-              <KeyIcon className="h-6 w-6 text-gray-600 dark:text-gray-400" />
-            </div>
-            <h2 className="text-xl font-semibold text-gray-900 dark:text-white">
-              Security
-            </h2>
-          </div>
-          <form className="space-y-6">
-            <div>
-              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">
-                Current Password
-              </label>
-              <input
-                type="password"
-                className="mt-1 block w-full rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 px-3 py-2 text-gray-900 dark:text-white shadow-sm focus:border-primary-500 dark:focus:border-primary-400 focus:outline-none focus:ring-1 focus:ring-primary-500 dark:focus:ring-primary-400"
-              />
-            </div>
-            <div>
-              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">
-                New Password
-              </label>
-              <input
-                type="password"
-                className="mt-1 block w-full rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 px-3 py-2 text-gray-900 dark:text-white shadow-sm focus:border-primary-500 dark:focus:border-primary-400 focus:outline-none focus:ring-1 focus:ring-primary-500 dark:focus:ring-primary-400"
-              />
-            </div>
-            <div className="flex justify-end">
-              <button className="rounded-lg bg-primary-600 px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-primary-500 dark:bg-primary-500 dark:hover:bg-primary-400">
-                Update Password
-              </button>
-            </div>
+            <Button type="submit" variant="primary" loading={isLoading}>
+              Save Changes
+            </Button>
           </form>
         </div>
 

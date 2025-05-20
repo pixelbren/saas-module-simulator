@@ -1,46 +1,39 @@
 "use client";
 
-import {
-  Bars3Icon,
-  BellIcon,
-  MagnifyingGlassIcon,
-  UserIcon,
-} from "@heroicons/react/24/outline";
-import Image from "next/image";
-import { useSession } from "next-auth/react";
+import { MagnifyingGlassIcon, UserIcon } from "@heroicons/react/24/outline";
 import ThemeToggle from "./ThemeToggle";
+import { Button } from "@/components/ui/Button";
+import { Icon } from "@/components/ui/Icon";
 
 interface TopNavProps {
-  onSidebarOpen: () => void;
-  showSidebarToggle?: boolean;
+  isCollapsed?: boolean;
+  onCollapse?: (collapsed: boolean) => void;
 }
 
 export default function TopNav({
-  onSidebarOpen,
-  showSidebarToggle = true,
+  isCollapsed = false,
+  onCollapse,
 }: TopNavProps) {
-  const { data: session } = useSession();
-
   return (
-    <div className="sticky top-0 z-40 flex h-16 shrink-0 items-center gap-x-4 border-b border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-800 px-4 shadow-sm sm:gap-x-6 sm:px-6 lg:px-8">
-      {showSidebarToggle && (
-        <button
+    <div className="sticky top-0 z-40 flex h-16 shrink-0 items-center gap-x-4 border-b border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-800 px-4 sm:gap-x-6 sm:px-6 lg:px-8">
+      <div className="flex flex-1 gap-x-4 self-stretch items-center lg:gap-x-6">
+        <Button
           type="button"
-          className="-m-2.5 p-2.5 text-gray-700 dark:text-gray-200 lg:hidden"
-          onClick={onSidebarOpen}
+          variant="tertiary"
+          size="sm"
+          className="hidden lg:inline-flex"
+          aria-label={isCollapsed ? "Expand sidebar" : "Collapse sidebar"}
+          onClick={() => onCollapse && onCollapse(!isCollapsed)}
         >
-          <span className="sr-only">Open sidebar</span>
-          <Bars3Icon className="h-6 w-6" aria-hidden="true" />
-        </button>
-      )}
-
-      <div className="flex flex-1 gap-x-4 self-stretch lg:gap-x-6">
-        <div className="flex items-center">
-          <h1 className="text-lg font-semibold text-gray-900 dark:text-white">
-            Welcome back
-            {session?.user?.name ? `, ${session.user.name}` : ""}!
-          </h1>
-        </div>
+          <Icon
+            name={isCollapsed ? "List" : "List"}
+            size={22}
+            className="text-gray-400"
+          />
+        </Button>
+        <h1 className="text-lg font-semibold text-gray-900 dark:text-white">
+          Welcome!
+        </h1>
       </div>
 
       <div className="flex flex-1 max-w-md">
@@ -64,14 +57,16 @@ export default function TopNav({
         </div>
       </div>
 
-      <div className="flex items-center gap-x-4 lg:gap-x-6">
-        <button
-          type="button"
-          className="-m-2.5 p-2.5 text-gray-400 hover:text-gray-500 dark:text-gray-400 dark:hover:text-gray-300"
-        >
+      <div className="flex items-center gap-x-2 lg:gap-x-2">
+        <Button type="button" variant="tertiary" size="sm">
           <span className="sr-only">View notifications</span>
-          <BellIcon className="h-6 w-6" aria-hidden="true" />
-        </button>
+          <Icon
+            name="Bell"
+            size={24}
+            className="text-gray-400 dark:text-gray-500"
+            aria-hidden="true"
+          />
+        </Button>
 
         <ThemeToggle />
 
@@ -81,22 +76,12 @@ export default function TopNav({
         />
 
         <div className="relative">
-          <button className="relative flex rounded-full bg-white dark:bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 dark:focus:ring-offset-gray-900">
+          <Button className="relative flex rounded-full bg-white dark:bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 dark:focus:ring-offset-gray-900">
             <span className="sr-only">Open user menu</span>
-            <div className="h-8 w-8 rounded-full overflow-hidden bg-gray-100 dark:bg-gray-700">
-              {session?.user?.image ? (
-                <Image
-                  src={session.user.image}
-                  alt="Profile"
-                  width={32}
-                  height={32}
-                  className="h-full w-full object-cover"
-                />
-              ) : (
-                <UserIcon className="h-full w-full text-gray-300 dark:text-gray-500" />
-              )}
+            <div className="h-8 w-8 rounded-full overflow-hidden bg-gray-100 dark:bg-gray-700 flex items-center justify-center">
+              <UserIcon className="h-full w-full text-gray-300 dark:text-gray-500" />
             </div>
-          </button>
+          </Button>
         </div>
       </div>
     </div>

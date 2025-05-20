@@ -22,6 +22,7 @@ import {
   Filler,
 } from "chart.js";
 import { Line, Bar, Doughnut } from "react-chartjs-2";
+import { Button } from "@/components/ui/Button";
 
 // Register ChartJS components
 ChartJS.register(
@@ -227,7 +228,7 @@ function classNames(...classes: string[]) {
 
 export default function Dashboard() {
   return (
-    <div className="space-y-8 p-8 max-w-[1920px] mx-auto">
+    <div className="space-y-8 max-w-[1920px] mx-auto">
       <div className="flex items-center justify-between">
         <div>
           <h2 className="text-3xl font-semibold text-gray-900 dark:text-white">
@@ -237,10 +238,9 @@ export default function Dashboard() {
             Friday, December 15th 2023
           </p>
         </div>
-        <button className="btn bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 rounded-xl px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-200 flex items-center transition-all duration-200">
-          <ArrowDownIcon className="h-4 w-4 mr-2" />
+        <Button variant="outline" size="sm" icon={ArrowDownIcon}>
           Download Report
-        </button>
+        </Button>
       </div>
 
       {/* Stats */}

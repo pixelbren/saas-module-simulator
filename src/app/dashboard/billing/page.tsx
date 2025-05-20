@@ -8,6 +8,7 @@ import {
   BanknotesIcon,
   ClockIcon,
 } from "@heroicons/react/24/outline";
+import { Button } from "@/components/ui/Button";
 
 const plans = [
   {
@@ -108,9 +109,7 @@ export default function Billing() {
               Pro Plan
             </p>
           </div>
-          <button className="rounded-lg bg-primary-600 px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-primary-500 dark:bg-primary-500 dark:hover:bg-primary-400">
-            Upgrade Plan
-          </button>
+          <Button variant="outline">Upgrade Plan</Button>
         </div>
       </div>
 
@@ -134,14 +133,12 @@ export default function Billing() {
                 </p>
               </div>
             </div>
-            <button className="text-sm font-medium text-primary-600 hover:text-primary-500 dark:text-primary-400 dark:hover:text-primary-300">
-              Edit
-            </button>
+            <Button variant="outline">Edit</Button>
           </div>
-          <button className="flex items-center gap-2 text-sm font-medium text-primary-600 hover:text-primary-500 dark:text-primary-400 dark:hover:text-primary-300">
+          <Button variant="outline" className="flex items-center gap-2">
             <BanknotesIcon className="h-5 w-5" />
             Add new payment method
-          </button>
+          </Button>
         </div>
       </div>
 
@@ -196,7 +193,7 @@ export default function Billing() {
                       </li>
                     ))}
                   </ul>
-                  <button
+                  <Button
                     type="button"
                     onClick={() => handleSubscribe(plan.name)}
                     disabled={isLoading || selectedPlan === plan.name}
@@ -207,7 +204,7 @@ export default function Billing() {
                     } px-4 py-2 text-center text-sm font-medium shadow-sm focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2`}
                   >
                     {selectedPlan === plan.name ? "Current Plan" : "Subscribe"}
-                  </button>
+                  </Button>
                 </div>
               </div>
             ))}
@@ -243,9 +240,7 @@ export default function Billing() {
                 <p className="font-medium text-gray-900 dark:text-white">
                   {item.amount}
                 </p>
-                <button className="text-sm font-medium text-primary-600 hover:text-primary-500 dark:text-primary-400 dark:hover:text-primary-300">
-                  Download
-                </button>
+                <Button variant="outline">Download</Button>
               </div>
             </div>
           ))}
