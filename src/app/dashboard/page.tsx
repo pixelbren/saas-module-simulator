@@ -229,7 +229,7 @@ function classNames(...classes: string[]) {
 
 export default function Dashboard() {
   return (
-    <div className="space-y-8 max-w-[1920px] mx-auto">
+    <div className="space-y-6 max-w-[1440px] mx-auto">
       <div className="flex items-center justify-between">
         <div>
           <h1 className=" text-black dark:text-white">
@@ -292,7 +292,7 @@ export default function Dashboard() {
       </div>
 
       {/* Charts Grid */}
-      <div className="grid grid-cols-1 gap-8 lg:grid-cols-2">
+      <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
         <Card>
           <div className="flex items-center justify-between mb-6">
             <div>
@@ -334,7 +334,7 @@ export default function Dashboard() {
         </Card>
       </div>
 
-      <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
+      <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
         <Card>
           <div className="flex items-center justify-between mb-6">
             <div>
