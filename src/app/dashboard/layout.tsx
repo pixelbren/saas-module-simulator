@@ -13,7 +13,7 @@ export default function DashboardLayout({
   const [isCollapsed, setIsCollapsed] = useState(false);
 
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
+    <div className="min-h-screen bg-white dark:bg-gray-800">
       <Sidebar
         isMobile={sidebarOpen}
         onClose={() => setSidebarOpen(false)}
@@ -28,8 +28,8 @@ export default function DashboardLayout({
       >
         <TopNav isCollapsed={isCollapsed} onCollapse={setIsCollapsed} />
 
-        <main className="py-10">
-          <div className="px-4 sm:px-6 lg:px-8">{children}</div>
+        <main className="pt-6 px-12 pb-10">
+          <div className="">{children}</div>
         </main>
       </div>
     </div>

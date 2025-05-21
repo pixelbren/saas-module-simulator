@@ -1,6 +1,6 @@
 "use client";
 
-import { MagnifyingGlassIcon, UserIcon } from "@heroicons/react/24/outline";
+import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";
 import ThemeToggle from "./ThemeToggle";
 import { Button } from "@/components/ui/Button";
 import { Icon } from "@/components/ui/Icon";
@@ -15,8 +15,8 @@ export default function TopNav({
   onCollapse,
 }: TopNavProps) {
   return (
-    <div className="sticky top-0 z-40 flex h-16 shrink-0 items-center gap-x-4 border-b border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-800 px-4 sm:gap-x-6 sm:px-6 lg:px-8">
-      <div className="flex flex-1 gap-x-4 self-stretch items-center lg:gap-x-6">
+    <div className="sticky top-0 z-40 flex h-16 shrink-0 items-center gap-x-4 border-b border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 px-4 sm:gap-x-6 sm:px-6 lg:px-8">
+      <div className="flex flex-1 gap-x-2 self-stretch items-center lg:gap-x-2">
         <Button
           type="button"
           variant="tertiary"
@@ -31,9 +31,7 @@ export default function TopNav({
             className="text-gray-400"
           />
         </Button>
-        <h1 className="text-lg font-semibold text-gray-900 dark:text-white">
-          Welcome!
-        </h1>
+        <h3 className=" text-gray-900 dark:text-white">Welcome!</h3>
       </div>
 
       <div className="flex flex-1 max-w-md">
@@ -76,12 +74,16 @@ export default function TopNav({
         />
 
         <div className="relative">
-          <Button className="relative flex rounded-full bg-white dark:bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 dark:focus:ring-offset-gray-900">
+          <div className="relative flex rounded-full bg-white dark:bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 dark:focus:ring-offset-gray-900">
             <span className="sr-only">Open user menu</span>
             <div className="h-8 w-8 rounded-full overflow-hidden bg-gray-100 dark:bg-gray-700 flex items-center justify-center">
-              <UserIcon className="h-full w-full text-gray-300 dark:text-gray-500" />
+              <Icon
+                name="User"
+                size={24}
+                className="text-gray-300 dark:text-gray-500"
+              />
             </div>
-          </Button>
+          </div>
         </div>
       </div>
     </div>

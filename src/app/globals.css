@@ -27,6 +27,8 @@
   --color-secondary-800: oklch(0.55 0.15 30);
   --color-secondary-900: oklch(0.5 0.1 30);
   --color-secondary-950: oklch(0.45 0.05 30);
+  --color-white: #ffffff;
+  --color-black: #202049;
 
   --color-accent-50: oklch(0.95 0.05 200);
   --color-accent-100: oklch(0.9 0.1 200);
@@ -168,159 +170,28 @@
   --color-border: #e5e7eb;
   --color-border-hover: #d1d5db;
 }
-
-@layer base {
-  body {
-    @apply bg-white text-gray-900 font-sans;
-  }
-}
-
-@layer components {
-  /* Card component */
-  .card {
-    @apply bg-white rounded-lg p-6 shadow-sm border border-gray-200 hover:border-gray-300;
-  }
-
-  /* Button component */
-  .btn {
-    @apply inline-flex items-center px-4 py-2 rounded-md text-sm font-medium transition-colors duration-200;
-  }
-  .btn-primary {
-    @apply bg-[var(--color-primary-600)] text-white hover:bg-[var(--color-primary-600)];
-  }
-  .btn-secondary {
-    @apply bg-[var(--color-secondary-500)] text-white hover:bg-[var(--color-secondary-600)];
-  }
-  .btn-outline {
-    @apply border border-gray-200 text-gray-700 hover:bg-gray-50;
-  }
-
-  /* Status badge component */
-  .badge {
-    @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium;
-  }
-  .badge-success {
-    @apply bg-green-100 text-green-800;
-  }
-  .badge-error {
-    @apply bg-red-100 text-red-800;
-  }
-  .badge-muted {
-    @apply bg-gray-100 text-gray-800;
-  }
-
-  /* Table component */
-  .table {
-    @apply min-w-full divide-y divide-gray-200;
-  }
-  .table-header {
-    @apply bg-gray-50 border-b border-gray-200;
-  }
-  .table-header-cell {
-    @apply px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider;
-  }
-  .table-row {
-    @apply bg-white hover:bg-gray-50;
-  }
-  .table-cell {
-    @apply px-6 py-4 whitespace-nowrap text-sm text-gray-900;
-  }
-  .table-cell-primary {
-    @apply font-medium text-[var(--color-primary-600)];
-  }
-  .table-cell-muted {
-    @apply text-gray-500;
-  }
-}
-
-@layer utilities {
-  /* Text utilities */
-  .text-primary {
-    @apply text-[var(--color-primary-500)];
-  }
-  .text-secondary {
-    @apply text-[var(--color-secondary-500)];
-  }
-  .text-muted {
-    @apply text-[var(--color-muted-500)];
-  }
-  .text-success {
-    @apply text-[var(--color-success-500)];
-  }
-  .text-primary-600rror {
-    @apply text-[var(--color-error-500)];
-  }
-
-  /* Background utilities */
-  .bg-primary {
-    @apply bg-[var(--color-primary-500)];
-  }
-  .bg-secondary {
-    @apply bg-[var(--color-secondary-500)];
-  }
-  .bg-accent {
-    @apply bg-[var(--color-accent-500)];
-  }
-  .bg-success {
-    @apply bg-[var(--color-success-500)];
-  }
-  .bg-error {
-    @apply bg-[var(--color-error-500)];
-  }
-
-  /* Spacing utilities */
-  .p-sm {
-    @apply p-4;
-  }
-  .p-md {
-    @apply p-6;
-  }
-  .p-lg {
-    @apply p-8;
-  }
-
-  .m-sm {
-    @apply m-4;
-  }
-  .m-md {
-    @apply m-6;
-  }
-  .m-lg {
-    @apply m-8;
-  }
-
-  /* Border radius utilities */
-  .rounded-sm {
-    @apply rounded-sm;
-  }
-  .rounded-md {
-    @apply rounded;
-  }
-  .rounded-lg {
-    @apply rounded-lg;
-  }
-  .rounded-circle {
-    @apply rounded-full;
-  }
-
-  /* Shadow utilities */
-  .shadow {
-    @apply shadow;
-  }
-  .shadow-md {
-    @apply shadow-md;
-  }
-  .shadow-lg {
-    @apply shadow-lg;
-  }
-}
-
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
 :root {
   --font-alumni-sans: var(--font-alumni-sans);
+  h1 {
+    font-family: var(--font-alumni-sans);
+    font-size: var(--text-3xl);
+    font-weight: var(--font-weight-bold);
+  }
+  h2 {
+    font-family: var(--font-alumni-sans);
+    font-size: var(--text-2xl);
+    font-weight: var(--font-weight-bold);
+  }
+  h3 {
+    font-family: var(--font-alumni-sans);
+    font-size: var(--text-xl);
+    font-weight: var(--font-weight-bold);
+  }
+  h4 {
+    font-family: var(--font-alumni-sans);
+    font-size: var(--text-lg);
+    font-weight: var(--font-weight-semibold);
+  }
 }
 
 .font-alumni-sans {

@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { Button } from "@/components/ui/Button";
 import { Icon } from "@/components/ui/Icon";
+import Image from "next/image";
 
 interface NavigationItem {
   name: string;
@@ -58,7 +59,7 @@ export default function Sidebar({
 
   const content = (
     <div
-      className={`flex h-full flex-col bg-white dark:bg-gray-800 transition-all duration-300 ${
+      className={`flex h-full flex-col bg-white border-r border-gray-200 dark:border-gray-700 dark:bg-gray-800 transition-all duration-300 ${
         isCollapsed ? "w-20" : "w-72"
       }`}
     >
@@ -71,15 +72,25 @@ export default function Sidebar({
           {!isCollapsed ? (
             <>
               <span className="text-xl font-semibold text-primary-600 dark:text-primary-400">
-                YSaaS
+                <Image
+                  src="/ys-logo-mark.png"
+                  alt="YSaaS"
+                  width={32}
+                  height={32}
+                  className="w-8 h-8"
+                />
               </span>
-              <span className="text-sm text-gray-600 dark:text-gray-400">
-                Simulator
-              </span>
+              <h4 className="text-gray-900">YSaas Simulator</h4>
             </>
           ) : (
             <span className="text-xl font-semibold text-primary-600 dark:text-primary-400">
-              Y
+              <Image
+                src="/ys-logo-mark.png"
+                alt="YSaaS"
+                width={24}
+                height={24}
+                className="w-6 h-6"
+              />
             </span>
           )}
         </Link>

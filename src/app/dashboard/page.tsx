@@ -23,6 +23,7 @@ import {
 } from "chart.js";
 import { Line, Bar, Doughnut } from "react-chartjs-2";
 import { Button } from "@/components/ui/Button";
+import { Card } from "@/components/ui/card";
 
 // Register ChartJS components
 ChartJS.register(
@@ -231,9 +232,9 @@ export default function Dashboard() {
     <div className="space-y-8 max-w-[1920px] mx-auto">
       <div className="flex items-center justify-between">
         <div>
-          <h2 className="text-3xl font-semibold text-gray-900 dark:text-white">
-            Module Overview
-          </h2>
+          <h1 className=" text-black dark:text-white">
+            Your modules are running smoothly
+          </h1>
           <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">
             Friday, December 15th 2023
           </p>
@@ -246,16 +247,13 @@ export default function Dashboard() {
       {/* Stats */}
       <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
         {stats.map((item) => (
-          <div
-            key={item.name}
-            className="relative overflow-hidden rounded-xl bg-white dark:bg-gray-800 p-6 shadow-lg dark:shadow-gray-900/20"
-          >
+          <Card key={item.name}>
             <dt>
-              <div className="absolute rounded-xl p-3 bg-gradient-to-r from-primary-400 to-primary-600 dark:from-primary-500 dark:to-primary-700">
+              <div className="absolute rounded-xl p-3 bg-primary-600 dark:from-primary-500 dark:to-primary-700">
                 <item.icon className="h-6 w-6 text-white" aria-hidden="true" />
               </div>
               <div className="ml-16">
-                <p className="truncate text-sm font-medium text-gray-500 dark:text-gray-400">
+                <p className="truncate text-sm font-medium text-black dark:text-gray-400">
                   {item.name}
                 </p>
                 <p className="text-xs mt-1 text-gray-400 dark:text-gray-500">
@@ -264,7 +262,7 @@ export default function Dashboard() {
               </div>
             </dt>
             <dd className="ml-16 mt-6 flex items-baseline">
-              <p className="text-xl font-semibold text-gray-900 dark:text-white">
+              <p className="text-xl font-bold text-black dark:text-white">
                 {item.value}
               </p>
               <p
@@ -289,13 +287,13 @@ export default function Dashboard() {
                 <span className="ml-1">{item.change}</span>
               </p>
             </dd>
-          </div>
+          </Card>
         ))}
       </div>
 
       {/* Charts Grid */}
       <div className="grid grid-cols-1 gap-8 lg:grid-cols-2">
-        <div className="rounded-xl bg-white dark:bg-gray-800 p-6 shadow-lg dark:shadow-gray-900/20">
+        <Card>
           <div className="flex items-center justify-between mb-6">
             <div>
               <h3 className="text-xl font-semibold text-gray-900 dark:text-white">
@@ -313,9 +311,9 @@ export default function Dashboard() {
           <div className="h-80">
             <Line data={monthlyData} options={lineOptions} />
           </div>
-        </div>
+        </Card>
 
-        <div className="rounded-xl bg-white dark:bg-gray-800 p-6 shadow-lg dark:shadow-gray-900/20">
+        <Card>
           <div className="flex items-center justify-between mb-6">
             <div>
               <h3 className="text-xl font-semibold text-gray-900 dark:text-white">
@@ -333,11 +331,11 @@ export default function Dashboard() {
           <div className="h-80">
             <Bar data={revenueData} options={barOptions} />
           </div>
-        </div>
+        </Card>
       </div>
 
       <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
-        <div className="rounded-xl bg-white dark:bg-gray-800 p-6 shadow-lg dark:shadow-gray-900/20 lg:col-span-1">
+        <Card>
           <div className="flex items-center justify-between mb-6">
             <div>
               <h3 className="text-xl font-semibold text-gray-900 dark:text-white">
@@ -355,11 +353,11 @@ export default function Dashboard() {
           <div className="h-64">
             <Doughnut data={usageData} options={doughnutOptions} />
           </div>
-        </div>
+        </Card>
 
         {/* Software Status Table */}
-        <div className="rounded-xl bg-white dark:bg-gray-800 shadow-lg dark:shadow-gray-900/20 lg:col-span-2">
-          <div className="flex items-center justify-between mb-6 p-6">
+        <Card className="lg:col-span-2">
+          <div className="flex items-center justify-between mb-6">
             <div>
               <h3 className="text-xl font-semibold text-gray-900 dark:text-white">
                 Module Status
@@ -420,7 +418,7 @@ export default function Dashboard() {
               </tbody>
             </table>
           </div>
-        </div>
+        </Card>
       </div>
     </div>
   );

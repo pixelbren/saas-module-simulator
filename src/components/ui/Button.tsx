@@ -16,9 +16,9 @@ export interface ButtonProps
 }
 
 const variantClasses = {
-  primary: "btn btn-primary",
-  secondary: "btn btn-secondary",
-  outline: "btn btn-outline",
+  primary: "bg-primary-600 text-white hover:bg-primary-700 rounded-full",
+  secondary: "bg-secondary-600 text-white hover:bg-secondary-700 rounded-lg",
+  outline: "border border-gray-300 hover:border-gray-400 rounded-lg",
   tertiary:
     "bg-transparent text-primary-600 hover:bg-primary-50 dark:text-primary-400 dark:hover:bg-primary-900/10 border-none rounded-lg shadow-none",
 };
