@@ -80,7 +80,7 @@ export default function Sidebar({
                   className="w-8 h-8"
                 />
               </span>
-              <h4 className="text-gray-900">YSaas Simulator</h4>
+              <h4 className="text-gray-900 dark:text-white">YSaas Simulator</h4>
             </>
           ) : (
             <span className="text-xl font-semibold text-primary-600 dark:text-primary-400">

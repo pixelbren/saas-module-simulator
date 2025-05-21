@@ -90,10 +90,14 @@ export default function ThemeToggle() {
         <Icon
           name="Moon"
           size={20}
-          className="text-gray-400 dark:text-gray-200"
+          className="text-gray-400 dark:text-gray-500"
         />
       ) : (
-        <Icon name="Monitor" size={20} className="text-gray-500" />
+        <Icon
+          name="Monitor"
+          size={20}
+          className="text-gray-400 dark:text-gray-500"
+        />
       )}
     </Button>
   );

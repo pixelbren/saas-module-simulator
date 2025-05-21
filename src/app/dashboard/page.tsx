@@ -239,7 +239,12 @@ export default function Dashboard() {
             Friday, December 15th 2023
           </p>
         </div>
-        <Button variant="outline" size="sm" iconRight="DownloadSimple">
+        <Button
+          variant="outline"
+          size="md"
+          iconRight="DownloadSimple"
+          iconColor="text-primary-600 dark:text-primary-400"
+        >
           Download Report
         </Button>
       </div>

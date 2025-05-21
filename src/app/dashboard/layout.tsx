@@ -14,20 +14,26 @@ export default function DashboardLayout({
 
   return (
     <div className="min-h-screen bg-white dark:bg-gray-800">
+      {/* Desktop Sidebar */}
       <Sidebar
-        isMobile={sidebarOpen}
-        onClose={() => setSidebarOpen(false)}
+        isMobile={false}
         isCollapsed={isCollapsed}
         onCollapse={setIsCollapsed}
       />
-
+      {/* Mobile Sidebar Overlay */}
+      {sidebarOpen && (
+        <Sidebar isMobile={true} onClose={() => setSidebarOpen(false)} />
+      )}
       <div
         className={`transition-all duration-300 ${
           isCollapsed ? "lg:pl-20" : "lg:pl-72"
         }`}
       >
-        <TopNav isCollapsed={isCollapsed} onCollapse={setIsCollapsed} />
-
+        <TopNav
+          isCollapsed={isCollapsed}
+          onCollapse={setIsCollapsed}
+          onShowSidebar={() => setSidebarOpen(true)}
+        />
         <main className="pt-6 px-12 pb-10">
           <div className="">{children}</div>
         </main>

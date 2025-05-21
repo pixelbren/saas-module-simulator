@@ -176,6 +176,7 @@
     font-family: var(--font-alumni-sans);
     font-size: var(--text-3xl);
     font-weight: var(--font-weight-bold);
+    line-height: var(--leading-tight);
   }
   h2 {
     font-family: var(--font-alumni-sans);
