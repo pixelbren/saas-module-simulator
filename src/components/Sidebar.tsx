@@ -36,7 +36,7 @@ const navigation: NavigationItem[] = [
     group: "Dashboards",
   },
   {
-    name: "Analytics",
+    name: "Sales Dashboard",
     href: "/dashboard/analytics",
     icon: "📊",
     group: "Dashboards",
