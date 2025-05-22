@@ -37,7 +37,7 @@ const navigation: NavigationItem[] = [
   },
   {
     name: "Sales Dashboard",
-    href: "/dashboard/analytics",
+    href: "/dashboard/sales-dashboard",
     icon: "📊",
     group: "Dashboards",
   },
